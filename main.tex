@@ -9,10 +9,22 @@
 
 
 \documentclass[11pt]{article}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{wrapfig,verbatim,caption,subcaption,calc,relsize,multicol,enumitem,titlesec}
+
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs}
-\usepackage{hyperref}
-\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+
+%Includes "References" in the table of contents
+\usepackage[nottoc]{tocbibind}
+\def\apj{AstroPhysical Journal}             % Astrophysical Journal
+\def\apjl{Astrophysical Journal, Letters}                % Astrophysical Journal, Letters
+\def\apjs{Astrophysical Journal, Supplements}               % 
 
 \title{Template for LSST Call For Survey Strategy Optimization White Papers}
 \author{}
@@ -60,7 +72,7 @@ The `wide-fast-deep' (WFD) Main Survey. (Although, a Mini-Survey in which only a
 
 {\bf MLG: bibliography's not working}
 
-Explosive and eruptive transients that rise and fall in brightness within $3$--$5$ days have historically been rarely discovered due to sky survey efficiencies, but are also intrinsically rare ($\sim 5\%$ of the rate of core-collapse supernovae; \citealt{2014ApJ...794...23D}). Similarly, {\it fast features} in otherwise long-duration transient events, such as ejecta impacting circumstellar material or a binary companion star, are rarely caught due to their short-lived nature, and also appear to be intrinsically rare.
+Explosive and eruptive transients that rise and fall in brightness within $3$--$5$ days have historically been rarely discovered due to sky survey efficiencies, but are also intrinsically rare ($\sim 5\%$ of the rate of core-collapse supernovae; \cite{2014ApJ...794...23D}). Similarly, {\it fast features} in otherwise long-duration transient events, such as ejecta impacting circumstellar material or a binary companion star, are rarely caught due to their short-lived nature, and also appear to be intrinsically rare.
 
 As we describe with specific examples below, fast transients and fast features provide a unique window on the physical mechanisms and progenitor scenarios of stellar eruptions and explosions, and the late stages of stellar evolution. This has an especially high impact in two cases: (1) the relatively short-duration late stages of stellar evolution where the star undergoes rapid changes in the lead up to a supernova, and (2) binary (or even tertiary) systems where dynamical evolution and/or mass transfer plays a key role in determining the stellar evolutionary processes and outcomes. 
 
@@ -78,7 +90,7 @@ MLG: identify literature and existing data of the types of features and LC that 
     \item SN\,Ia blue bump from companion interaction
     \item stellar envelope and circumstellar material (IIb)
     \item kilonovae (discovered independently of GW)
-    \iter microlensing events
+    \item microlensing events
     \item .Ia (point-Ia; Bildten)
     \item fast transients \citep{2014ApJ...794...23D}
 \end{itemize}
@@ -242,6 +254,7 @@ The science goals that motivate the proposed cadence in this white paper will no
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{References}
+\bibliographystyle{aasjournal}
 
 \bibliography{main}
 
