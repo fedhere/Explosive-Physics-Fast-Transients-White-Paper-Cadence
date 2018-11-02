@@ -21,7 +21,12 @@ extragalactic fields that are being included in rolling cadence
 
 and maybe some GP fields (microlensing events on short timescales; binary stars and BH, not exoplanets)
 
-
+TO DEFINE: 
+filter pairs
+FOR EACH FILTER PAIR:
+    max filter gap 1 (for color) 
+    min filter gap 2 (for shape) 
+    max filter gap 2 (for timely ID) 
 # # # #
 metrics
 

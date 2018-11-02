@@ -12,6 +12,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{booktabs}
 \usepackage{hyperref}
+\usepackage{graphicx}
 
 \title{Template for LSST Call For Survey Strategy Optimization White Papers}
 \author{}
@@ -59,12 +60,13 @@ The `wide-fast-deep' (WFD) Main Survey. (Although, a Mini-Survey in which only a
 
 {\bf MLG: bibliography's not working}
 
-Explosive and eruptive transients that rise and fall in brightness within $3$--$5$ days have historically been rarely discovered due to sky survey efficiencies, but were also discovered to be intrinsically rare ($\sim 5\%$ of the rate of core-collapse supernovae, the most common type; \citealt{2014ApJ...794...23D}). Furthermore, {\it fast features} in otherwise long-duration transient events, such as ejecta impacting with circumstellar material or a binar
-y companion star, are rarely caught due to their short-lived nature, but also appear to be intrinsically rare characteristics.
+Explosive and eruptive transients that rise and fall in brightness within $3$--$5$ days have historically been rarely discovered due to sky survey efficiencies, but are also intrinsically rare ($\sim 5\%$ of the rate of core-collapse supernovae; \citealt{2014ApJ...794...23D}). Similarly, {\it fast features} in otherwise long-duration transient events, such as ejecta impacting circumstellar material or a binary companion star, are rarely caught due to their short-lived nature, and also appear to be intrinsically rare.
 
-The volume surveyed by LSST brings the promise of finding many more intrinsically rare objects, including fast transients and fast features, detailed examples of which are provided below. However, adequate time- and filter-sampling of these relatively short-lived events is necessary to deliver on this promise. Two distinctive features that can be extracted from the lightcurve by a small number of observcations are color, which gives information about the As we will show, the WFD baseline survey's inter-night revisit rate of once every three nights is too sparse, and the intra-night revisit rate of $\sim30$ minutes, driven by the moving object recovery pipeline, is too rapid. 
+As we describe with specific examples below, fast transients and fast features provide a unique window on the physical mechanisms and progenitor scenarios of stellar eruptions and explosions, and the late stages of stellar evolution. This has an especially high impact in two cases: (1) the relatively short-duration late stages of stellar evolution where the star undergoes rapid changes in the lead up to a supernova, and (2) binary (or even tertiary) systems where dynamical evolution and/or mass transfer plays a key role in determining the stellar evolutionary processes and outcomes. 
 
-As we will describe below, fast transients, and the fast features of longer duration transients, often provide a unique window on the physical mechanisms and progenitor scenarios of stellar eruptions and explosions. In addition to a better understanding of explosive physics, studies of these events also contribute to a better understanding of stellar evolution. This has an especially high impact in two cases: (1) the relatively short-duration late stages of stellar evolution where the star undergoes rapid changes in the lead up to a supernova, and (2) binary (or even tertiary) systems where dynamical evolution and/or mass transfer plays a key role in determining the stellar evolutionary processes and outcomes. 
+The volume surveyed by LSST brings the promise of finding many more intrinsically rare objects, however, adequate time- and filter-sampling of relatively short-lived events is necessary to deliver on this promise. Two distinctive features that can be extracted from the lightcurve by a small number of observations are the color and rate of brightness change, which give information about the event energetics and object type. As we will show, the WFD baseline survey's inter-night revisit rate of once every three nights is too sparse, and the intra-night revisit rate of $\sim30$ minutes, driven by the moving object recovery pipeline, is too rapid to identify fast transients and fast features. 
+
+
 
 
 \subsection{Targeted Transients}
@@ -98,6 +100,10 @@ MLG: identify literature and existing data of the types of features and LC that 
 \end{footnotesize}
 
 TBD.
+\begin{figure}[!h]
+\includegraphics[width=0.9\textwidth]{figures/highLevelCadence.png}
+\caption{Cadence example: two alternating filters cover regions of sky to obtain 3 observations per region, in 2 filters, with apprioriate time gaps to measure lightcurve color and shape.}
+\end{figure}
 
 \subsection{Footprint -- pointings, regions and/or constraints}
 \begin{footnotesize}{\it Describe the specific pointings or general region (RA/Dec, Galactic longitude/latitude or Ecliptic longitude/latitude) for the observations. Please describe any additional requirements, especially if there are no specific constraints on the pointings (e.g. stellar density, galactic dust extinction).}
