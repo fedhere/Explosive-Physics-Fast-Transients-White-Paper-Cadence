@@ -85,7 +85,7 @@ The `wide-fast-deep' (WFD) Main Survey. (Although, a Mini-Survey in which only a
 {\it Describe the scientific justification for this white paper in the context of your field, as well as the importance to the general program of astronomy, including the relevance over the next decade. Describe other relevant data, and justify why LSST is the best facility for these observations. (Limit: 2 pages + 1 page for figures.)}
 \end{footnotesize}
 
-{\bf MLG: bibliography's not working}
+%{\bf MLG: bibliography's not working}
 
 Explosive and eruptive transients that rise and fall in brightness within $3$--$5$ days have historically been rarely discovered due to sky survey efficiencies, but are also intrinsically rare ($\sim 5\%$ of the rate of core-collapse supernovae; \cite{2014ApJ...794...23D}). Similarly, {\it fast features} in otherwise long-duration transient events, such as ejecta impacting circumstellar material or a binary companion star, are rarely caught due to their short-lived nature, and also appear to be intrinsically rare.
 
@@ -93,24 +93,58 @@ As we describe with specific examples below, fast transients and fast features p
 
 The volume surveyed by LSST brings the promise of finding many more intrinsically rare objects, however, adequate time- and filter-sampling of relatively short-lived events is necessary to deliver on this promise. Two distinctive features that can be extracted from the lightcurve by a small number of observations are the color and rate of brightness change, which give information about the event energetics and object type. As we will show, the WFD baseline survey's inter-night revisit rate of once every three nights is too sparse, and the intra-night revisit rate of $\sim30$ minutes, driven by the moving object recovery pipeline, is too rapid to identify fast transients and fast features. 
 
+\subsection{Examples of ``Fast" Targets}
+
+To define our diagnostic, we collect the early-time color and rate of change of brightness, for a variety of fast transients and fast features in the LSST filters, in Table \ref{tab:1}. The different types of objects, and the main science goals of early identification, are provided below.
+
+\begin{center}
+\label{tab:1}
+\begin{tabular}{|c|cccccc|} 
+\hline
+Target Type & \multicolumn{6}{c|}{$dm/dt$ [$\rm mag\ hour^{-1}$]} \\
+  & $u$ & $g$ & $r$ & $i$ & $z$ & $y$  \\
+\hline 
+CCSN shock breakout &  &  &  &  &  & \\ 
+IIb+CSM &  &  &  &  &  & \\ 
+kilonovae &  &  &  &  &  & \\ 
+fast transients &  &  &  &  &  & \\ 
+SNIa normal  &  &  &  &  &  &  \\
+SNIa blue bumps &  &  &  &  &  &  \\ 
+point-Ia (Bildsten) &  &  &  &  &  & \\ 
+\hline
+\end{tabular}
+\end{center}
 
 
+\begin{center}
+\label{tab:1}
+\begin{tabular}{|c|ccccc|} 
+\hline
+Target Type & \multicolumn{5}{c|}{Color} \\
+  & $u-g$ & g-$r$ & $r-i$ & $i-z$ & $z-y$ \\
+\hline 
+CCSN shock breakout  &  &  &  &  & \\ 
+IIb+CSM  &  &  &  &  & \\ 
+kilonovae   &  &  &  &  & \\ 
+fast transients   &  &  &  &  & \\ 
+SNIa normal  &   &  &  &  &  \\
+SNIa blue bumps &  &  &  &  &    \\ 
+point-Ia (Bildsten)  &  &  &  &  & \\ 
+\hline
+\end{tabular}
+\end{center}
 
-\subsection{Targeted Transients}
+{\bf Core Collapse Supernova Shock Breakout --} When the shock of the core collapse reaches the photosphere, high energy emission escapes during a short, blue, luminous event.
 
-MLG: identify literature and existing data of the types of features and LC that exhibit what we want to find, and use that data to define a diagnostic; timescale for the color changes too, and keeping in mind that you want less filter changes in 30 min. how fast do the light curves evolve, and is 30 minutes too short to see evolution. recheck fed's plots for the dm/dt, and whether intra night or next-night is better, and in what filter (same/different)
+{\bf IIb+CSM --}
 
-\begin{itemize}
-    \item CC\,SN early bumps from shock breakout
-    \item SN\,Ia blue bump from companion interaction
-    \item stellar envelope and circumstellar material (IIb)
-    \item kilonovae (discovered independently of GW)
-    \item microlensing events
-    \item .Ia (point-Ia; Bildten)
-    \item fast transients \citep{2014ApJ...794...23D}
-\end{itemize}
+{\bf Kilonovae --} Serendipitous discovery of kilonovae while LIGO is offline would still yield science. 
 
-{\bf Companion Interaction in SNe\,Ia --} The photometric signature of the SN\,Ia ejecta shocking a non-degenerate companion star was first theoretically predicted by \cite{2010ApJ...708.1025K}, and best exemplified with observations of SN\,2017cbv by \cite{2017ApJ...845L..11H}. 
+{\bf Fast Transients -- }
+
+{\bf SNe\,Ia Blue Bumps --} Proposed to be the photometric signature of the SN\,Ia ejecta shocking a non-degenerate companion star, blue bumps in the first hours/days after SN\,Ia explosion was first theoretically predicted by \cite{2010ApJ...708.1025K}, and best exemplified with observations of SN\,2017cbv by \cite{2017ApJ...845L..11H}. The values in Table \ref{tab:1} for normal and blue bump SNe\,Ia are for low redshift, derived using the $UBVgri$ photometry for SN\,2017cbv from \cite{2010ApJ...708.1025K}, and the $XXX$ photometry from ? for SN\,2011fe. within the first day of observations (so there will be no $z$ or $y$, and the $u$ is just directly from $U$). They should be compared with the change in magnitude, and color, of a normal SN\,Ia. {\bf MLG: consider making the S-correction or finding alternate cbv data?}
+
+
 
 
 

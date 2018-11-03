@@ -31,7 +31,7 @@ FOR EACH FILTER PAIR:
 metrics
 
 describe and attach metrics for different science cases
-The metric is the fraction of events for which the color and risetime is constrained (within some accuracy). 
+The metric is the fraction of events for which the color and risetime and risetime is constrained (within some accuracy). 
 Different science cases may have different input lightcurves and different gap requirements
 
 first a diagnostic metric
