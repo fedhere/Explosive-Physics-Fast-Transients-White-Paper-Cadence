@@ -11,6 +11,7 @@
 \documentclass[11pt]{article}
 \usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{wrapfig,verbatim,caption,subcaption,calc,relsize,multicol,enumitem,titlesec}
@@ -93,24 +94,25 @@ As we describe with specific examples below, fast transients and fast features p
 
 The volume surveyed by LSST brings the promise of finding many more intrinsically rare objects, however, adequate time- and filter-sampling of relatively short-lived events is necessary to deliver on this promise. Two distinctive features that can be extracted from the lightcurve by a small number of observations are the color and rate of brightness change, which give information about the event energetics and object type. As we will show, the WFD baseline survey's inter-night revisit rate of once every three nights is too sparse, and the intra-night revisit rate of $\sim30$ minutes, driven by the moving object recovery pipeline, is too rapid to identify fast transients and fast features. 
 
-\subsection{Examples of ``Fast" Targets}
+\subsection{Examples of ``Fast" Transients/Features}
 
-To define our diagnostic, we collect the early-time color and rate of change of brightness, for a variety of fast transients and fast features in the LSST filters, in Table \ref{tab:1}. The different types of objects, and the main science goals of early identification, are provided below.
+To define our diagnostic, we collect the early-time observer-frame color and rate of change of brightness for a variety of fast transients and fast features in the LSST filters, in Table \ref{tab:1}. The different types of objects, and the main science goals of early identification, are discussed further below. {\bf This could, alternatively, be made into a plot showing parameter space in e.g., dm/dt vs. color.}
 
 \begin{center}
 \label{tab:1}
 \begin{tabular}{|c|cccccc|} 
 \hline
-Target Type & \multicolumn{6}{c|}{$dm/dt$ [$\rm mag\ hour^{-1}$]} \\
+Target Type & \multicolumn{6}{c|}{$dm/dt$ [$\rm mag\ day^{-1}$]} \\
   & $u$ & $g$ & $r$ & $i$ & $z$ & $y$  \\
 \hline 
 CCSN shock breakout &  &  &  &  &  & \\ 
 IIb+CSM &  &  &  &  &  & \\ 
 kilonovae &  &  &  &  &  & \\ 
 fast transients &  &  &  &  &  & \\ 
-SNIa normal  &  &  &  &  &  &  \\
-SNIa blue bumps &  &  &  &  &  &  \\ 
+SNIa normal     &  & $\sim -1$ &  &  &  &  \\
+SNIa blue bumps &  & $\gtrsim -1$ &  &  &  &  \\ 
 point-Ia (Bildsten) &  &  &  &  &  & \\ 
+AIC &  &  &  &  &  & \\ 
 \hline
 \end{tabular}
 \end{center}
@@ -121,15 +123,16 @@ point-Ia (Bildsten) &  &  &  &  &  & \\
 \begin{tabular}{|c|ccccc|} 
 \hline
 Target Type & \multicolumn{5}{c|}{Color} \\
-  & $u-g$ & g-$r$ & $r-i$ & $i-z$ & $z-y$ \\
+  & $u-g$ & $g-r$ & $r-i$ & $i-z$ & $z-y$ \\
 \hline 
 CCSN shock breakout  &  &  &  &  & \\ 
 IIb+CSM  &  &  &  &  & \\ 
 kilonovae   &  &  &  &  & \\ 
 fast transients   &  &  &  &  & \\ 
-SNIa normal  &   &  &  &  &  \\
-SNIa blue bumps &  &  &  &  &    \\ 
+SNIa normal     & -0.2 & -0.1 & -0.3 &  &  \\
+SNIa blue bumps & -0.6 & -0.2 & -0.3 &  &    \\ 
 point-Ia (Bildsten)  &  &  &  &  & \\ 
+AIC  &  &  &  &  &  \\ 
 \hline
 \end{tabular}
 \end{center}
@@ -142,9 +145,11 @@ point-Ia (Bildsten)  &  &  &  &  & \\
 
 {\bf Fast Transients -- }
 
-{\bf SNe\,Ia Blue Bumps --} Proposed to be the photometric signature of the SN\,Ia ejecta shocking a non-degenerate companion star, blue bumps in the first hours/days after SN\,Ia explosion was first theoretically predicted by \cite{2010ApJ...708.1025K}, and best exemplified with observations of SN\,2017cbv by \cite{2017ApJ...845L..11H}. The values in Table \ref{tab:1} for normal and blue bump SNe\,Ia are for low redshift, derived using the $UBVgri$ photometry for SN\,2017cbv from \cite{2010ApJ...708.1025K}, and the $XXX$ photometry from ? for SN\,2011fe. within the first day of observations (so there will be no $z$ or $y$, and the $u$ is just directly from $U$). They should be compared with the change in magnitude, and color, of a normal SN\,Ia. {\bf MLG: consider making the S-correction or finding alternate cbv data?}
+{\bf SNe\,Ia --} Blue bumps in the first hours/days of the SN\,Ia light curve are theoretically predicted to be the photometric signature of the SN\,Ia ejecta shocking a non-degenerate companion star \citep{2010ApJ...708.1025K}, and are best exemplified with observations of SN\,2017cbv by \cite{2017ApJ...845L..11H}. The values in Table \ref{tab:1} for normal and blue bump SNe\,Ia are for low redshift, derived using the $UBVgri$ photometry for SN\,2017cbv and SN\,2011fe from \cite{2010ApJ...708.1025K} within the first day of observations (see their figures 1 and 2; $U-B$ is used as a substitute $g-r$, and there was no early-time $z$ or $y$ for these events). In this case, an new point source next to an elliptical galaxy rising at $>1$ $\rm mag\ day^{-1}$ with a $g-r < -0.5$ would be an excellent candidate for a blue-bump SN\,Ia and should receive immediate follow-up.
 
+{\bf Point-Ia --} 
 
+{\bf Accretion-Induced Collapse (AIC) --} of a white dwarf to a neutron star,  \cite{2010MNRAS.409..846D} show they last $\sim3$ days and rise within $\sim0.5$ days to a peak R-band luminosity of $10^{41}$ $\rm erg\ s^{-1}$, which is $M_R\sim -16$ mag. {\bf MLG: Fig 2 shows their color evolution.}
 
 
 
