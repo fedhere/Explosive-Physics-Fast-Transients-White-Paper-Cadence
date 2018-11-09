@@ -92,22 +92,18 @@ The `wide-fast-deep' (WFD) Main Survey. (Although, a Mini-Survey in which only a
 Explosive and eruptive transients that rise and fall in brightness within $3$--$5$ days have historically been rarely discovered due to sky survey efficiencies, but are also intrinsically rare ($\sim 5\%$ of the rate of core-collapse supernovae; \cite{2014ApJ...794...23D}). Similarly, {\it fast features} in otherwise long-duration transient events, such as ejecta impacting circumstellar material or a binary companion star, are rarely caught due to their short-lived nature, and also appear to be intrinsically rare. As we describe with specific examples below, fast transients and fast features provide a unique window on the physical mechanisms and progenitor scenarios of stellar eruptions and explosions, and the late stages of stellar evolution including mass-loss and mass-transfer in binary systems.
 
 The volume surveyed by LSST brings the promise of finding and characterizing many more intrinsically rare events, however, adequate time- and filter-sampling of relatively short-lived events is necessary to deliver on this promise. The requisit observations in order to find these fast events early enough to trigger follow-up, {\it and/or} characterize a large sample of fast events with LSST photometry alone, are: (1) two filters obtained in quick succession so that color can be measured, and (2) a same-filter revisit within hours so the light-curve behaviour can be analyzed. As we will show, the WFD baseline survey's inter-night revisit rate of once every three nights is too sparse, and the intra-night revisit rate of $\sim30$ minutes is too rapid, to identify fast transients and fast features. The exact form of our proposed cadence is given in Section 3. 
-To define our diagnostic, we collect the early-time observer-frame color and rate of change of brightness for several exemplar types of fast transients and fast features in Tables \ref{tab:1} and \ref{tab:2}, and discuss the main science goals for each in turn. {\bf MLG: why are table refs broken??}
+To define our diagnostic, we collect the early-time observer-frame color and rate of change of brightness for several exemplar types of fast transients and fast features in Tables 1 and 2, and discuss the main science goals for each in turn.
 
-\noindent
-{\bf Fast Transients -- }
+{\bf Fast Transients --} First discovered in PanSTARRs data by \cite{2014ApJ...794...23D}, also called rapidly fading supernovae (RFSNe), and thought to be driven by the shock of low-mass ejecta propagating through an extended stellar envelope or wind (e.g., \citealt{2018MNRAS.475.3152K}). The sample presented in \cite{2014ApJ...794...23D} mostly have $z<0.3$, rise to peak within $1$--$3$ days (e.g., PS1-10bjp rises by $2.2$ mag in the $2.7$ days before peak), and are optically blue (observer-frame; figure 9 of \citealt{2014ApJ...794...23D}).
 
-\noindent
 {\bf Kilonovae --} Serendipitous discovery of kilonovae while LIGO is offline would still yield science. 
 
-\noindent
 {\bf Core Collapse Supernova Shock Breakout --} When the shock of the core collapse reaches the photosphere, high energy emission escapes in a short luminous burst (as theoretically predicted by, e.g., \citealt{1978ApJ...223L.109K}). The serendipidous discovery of nearby ($24.6$ Mpc) SN\,2016gkg's $\sim3$-day long shock-driven feature, which in it's first day exhibted a maximum rise rate of $\sim40$ $\rm mag\ day^{-1}$, is one of the best examples to date (\citealt{2018Natur.554..497B}; see also SN\,2011dh, \citealt{2011ApJ...742L..18A}). Observations of the shock breakout can directly constrain the star's radius and the mass in its envelope. While expected to be quite blue during the initial fast rise, the optical color can be neutral or even red during the $\lesssim 3$ day shock cooling phase, e.g., $B-V\sim0.5$ for SN\,2016gkg \citep[see their extended data table 3][]{2018Natur.554..497B}.
 % or $g-r\sim-0.1$ for SN\,2001dh (Arcavi et al. 2011)
 % by converting the g and R on the first day
 % to g-r~-0.1 via Lupton (2005) http://www.sdss3.org/dr8/algorithms/sdssUBVRITransform.php#Lupton2005
 % which really isn't that appropriate
 
-\noindent
 {\bf SNe\,Ia --} Blue bumps in the first hours/days of the SN\,Ia light curve are theoretically predicted to be the photometric signature of the SN\,Ia ejecta shocking a non-degenerate companion star \citep{2010ApJ...708.1025K}, and are best exemplified with observations of SN\,2017cbv by \cite{2017ApJ...845L..11H}. The values in Table \ref{tab:1} for normal and blue bump SNe\,Ia are for nearby ($<10$ Mpc) events, derived using the $UBVgri$ photometry for SN\,2017cbv and SN\,2011fe from \cite{2010ApJ...708.1025K} within the first day of observations (see their figures 1 and 2; $U-B$ is used as a substitute $g-r$, and there was no early-time $z$ or $y$ for these events). In this case, an new point source next to an elliptical galaxy rising at $>1$ $\rm mag\ day^{-1}$ with a $g-r < -0.5$ would be an excellent candidate for a blue-bump SN\,Ia and should receive immediate follow-up. {\bf Cite also Bianco et al.'s SNLS study here.}
 
 % {\bf Point-Ia --} 
@@ -124,9 +120,9 @@ To define our diagnostic, we collect the early-time observer-frame color and rat
 Target Type & \multicolumn{6}{c|}{$dm/dt$ [$\rm mag\ day^{-1}$]} \\
   & $u$ & $g$ & $r$ & $i$ & $z$ & $y$  \\
 \hline 
-fast transients &  &  &  &  &  & \\ 
+fast transients &  & $\gtrsim-0.8$ &  &  &  & \\ 
 kilonovae &  &  &  &  &  & \\ 
-CCSN shock breakout &  & $\sim10$ &  &  &  & \\ 
+CCSN shock breakout &  & $\sim-10$ &  &  &  & \\ 
 SNIa blue bumps &  & $\gtrsim -1$ &  &  &  &  \\ 
 SNIa normal     &  & $\sim -1$ &  &  &  &  \\
 %point-Ia (Bildsten) &  &  &  &  &  & \\ 
@@ -145,7 +141,7 @@ SNIa normal     &  & $\sim -1$ &  &  &  &  \\
 Target Type & \multicolumn{5}{c|}{Color} \\
   & $u-g$ & $g-r$ & $r-i$ & $i-z$ & $z-y$ \\
 \hline 
-fast transients   &  &  &  &  & \\ 
+fast transients   &  & $\leq-0.2$ &  &  & \\ 
 kilonovae   &  &  &  &  & \\ 
 CCSN shock breakout  & \multicolumn{5}{c|}{blue at $<1$ day, then neutral} \\ 
 SNIa blue bumps & -0.6 & -0.2 & -0.3 &  &    \\ 
