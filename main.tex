@@ -48,14 +48,14 @@
 \maketitle
 
 \begin{abstract}
-We propose a cadence for the LSST survey that would enable the prompt discovery of rapidlly varying transients including rare and poorly characterised fast supernova-like objects, Kilonovae, and fast evolving features in slower evolving transients (e.g. signature of interaction in supernovae).  Their prompt detection and characterization requires 3 observations within a night in two filters to measure color and lightcurve evolution. These transients are intrinsically rare, thus LSST could dramatically improve our understanding of their origin and properties. This cadence can be implemented as a Minisurvey or as part of a WideFastDeep survey on selected portions of the sky.
+We propose a cadence for the LSST survey in which three visits are obtained per night: two different filters within a short time window (e.g., $g$ \& $i$ or $r$ \& $z$ within $<1$ hour) and a repeat of one of those filters with a longer time window (e.g., $<4$ hours). We colloquially refer to this as the {\em Presto-Colores} strategy (quick-colors). This observing strategy delivers both the color and lightcurve evolution of transients on the same night as their first LSST detection. This will enable us to identify and characterize fast transients -- or fast features of longer timescale transients -- such as rapidly-declining supernovae (SNe), kilonovae (KNe), and the signatures of SN ejecta interacting with binary companion stars or circumstellar material. Such extragalactic transients are intrinsically rare, thus LSST could dramatically improve our understanding of their origin and properties. This cadence can be implemented as a Mini-Survey or as part of a Wide-Fast-Deep survey on selected portions of the extragalactic sky.
 \end{abstract}
 
 \section{White Paper Information}
 \begin{enumerate} 
 \item {\bf Science Category:} Exploring the Transient Sky, Dark Energy
 \item {\bf Survey Type Category:} 
-We are proposing this cadence as a variation of the  `wide-fast-deep' (WFD) Main Survey, but it could also be considered for implementation as a Mini-Survey or a Deep Drilling Field, observing only a portion of the sky.) 
+We are proposing this cadence as a variation of the  `wide-fast-deep' (WFD) Main Survey, but it could also be considered for implementation as a Mini-Survey or a Deep Drilling Field, observing only a portion of the sky. 
 \item {\bf Observing Strategy Category:} 
    a specific observing strategy to enable specific time domain science, that is relatively agnostic to where the telescope is pointed. 
 \end{enumerate}  
@@ -271,7 +271,8 @@ This proposed cadence uses the baseline exposure times of $2\times15$ seconds or
 \begin{footnotesize}
 {\it Any other constraints.}
 \end{footnotesize}
-This cadence should be implemented on extragalactic fields and some GP fields to detect and characterize microlensing events on short timescales; binary stars and BH.
+
+We propose that this cadence be implemented on extragalactic fields, but note that it may also be useful in some Galactic Plane fields to detect and characterize microlensing events on short timescales, binary stars, and black holes, for example. Trade-offs and synergies with other proposals are discussed further in Section 3.12, Item 5.
 
 
 \subsection{Estimated time requirement}
@@ -307,16 +308,14 @@ Since our proposed cadence is a modification of the WFD strategy -- a shuffling 
 \end{table}
 
 \subsection{Technical trades}
-\begin{footnotesize}
-{\it To aid in attempts to combine this proposed survey modification with others, please address the following questions:
+{\footnotesize {\it To aid in attempts to combine this proposed survey modification with others, please address the following questions:}}
 \begin{enumerate}
-    \item What is the effect of a trade-off between your requested survey footprint (area) and requested co-added depth or number of visits?
-    \item If not requesting a specific timing of visits, what is the effect of a trade-off between the uniformity of observations and the frequency of observations in time? e.g. a `rolling cadence' increases the frequency of visits during a short time period at the cost of fewer visits the rest of the time, making the overall sampling less uniform.
-    \item What is the effect of a trade-off on the exposure time and number of visits (e.g. increasing the individual image depth but decreasing the overall number of visits)?
-    \item What is the effect of a trade-off between uniformity in number of visits and co-added depth? Is there any benefit to real-time exposure time optimization to obtain nearly constant single-visit limiting depth?
-    \item Are there any other potential trade-offs to consider when attempting to balance this proposal with others which may have similar but slightly different requests?
-\end{enumerate}}
-\end{footnotesize}
+    \item {\footnotesize {\it What is the effect of a trade-off between your requested survey footprint (area) and requested co-added depth or number of visits?}} \\ As with a rolling cadence, the area in which this {\em Presto-Colore} strategy is applied will lower the visit cadence in other areas.
+    \item {\footnotesize {\it If not requesting a specific timing of visits, what is the effect of a trade-off between the uniformity of observations and the frequency of observations in time? e.g. a `rolling cadence' increases the frequency of visits during a short time period at the cost of fewer visits the rest of the time, making the overall sampling less uniform.}} \\ As with a rolling cadence, during the time when a field is not within the area being covered by the {\em Presto-Colore} strategy, it will receive fewer visits.
+    \item {\footnotesize {\it What is the effect of a trade-off on the exposure time and number of visits (e.g. increasing the individual image depth but decreasing the overall number of visits)?}} \\ Discovering fast transients and fast features does not benefit from an increase in exposure time at the expense of the number of visits. 
+    \item {\footnotesize {\it What is the effect of a trade-off between uniformity in number of visits and co-added depth? Is there any benefit to real-time exposure time optimization to obtain nearly constant single-visit limiting depth?}} \\ The science goals that motivate the {\em Presto-Colore} strategy do not benefit from increased co-added depth or maintaining a constant single-visit limiting depth.
+    \item {\footnotesize {\it Are there any other potential trade-offs to consider when attempting to balance this proposal with others which may have similar but slightly different requests?}} \\ There are a few other proposals similar to the {\em Presto-Colore} strategy proposed in this white paper. \\ (1) Street et al. ``The Diverse Science Return from a Wide-Area Survey of the Galactic Plane", which proposes the ``paired-$i$" strategy: fields in the Galactic plane are imaged every 2-3 days, first in $i$-band and then 1-4 hours later a revisit in $g$, $r$, or $z$. The basic motivation is the same -- to identify rapidly varying transients and characterize them via colors -- just for Galactic variables like Young Stellar Objects and Cataclysmic Variables. However, since we propose the {\em Presto-Colore} strategy for the extragalactic WFD there is no tension between these two white papers. \\ (2) 
+\end{enumerate}
 
 
 \clearpage
