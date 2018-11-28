@@ -1,0 +1,4 @@
+phase,temp,temp_e,rad,rad_e
+temperatures are in degrees Kelvin. radius is in 10^14 cm
+      -3.1400000       23791.890       5214.9629       3.1533793      0.60091054
+     -0.50000000       18657.351       3730.9980       4.8633802      0.95230740
