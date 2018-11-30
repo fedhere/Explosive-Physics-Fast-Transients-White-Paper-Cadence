@@ -39,7 +39,7 @@
 \newcommand{\dtone}{\ensuremath{\Delta T_1}}
 \newcommand{\dttwo}{\ensuremath{\Delta T_2}}
 \title{Explosive Physics \& Fast Transients LSST Cadence}
-\author{\small{Federica B. Bianco\footnote{fbianco@nyu.edu}, NYU CUSP/CCPP NYU, University of Delaware;}\\\small{Melissa Graham, University of Washington;}\\\small{Igor Andreoni, Caltech; Rahul Biswas, Stockholm University Philip Cowperthwaite,}\\\small{Carnegie; Maria Drout, Dunlap Institute, University of Toronto;}\\\small{Gautham Narayan, STScI; Tyler A Pritchard, NYU; Tiago Ribeiro, LSST; 
+\author{\small{Federica B. Bianco\footnote{fbianco@nyu.edu}, NYU CUSP/CCPP NYU, University of Delaware;}\\\small{Melissa Graham, University of Washington;}\\\small{Igor Andreoni, Caltech; Rahul Biswas, Stockholm University Philip Cowperthwaite,}\\\small{Carnegie; Maria R. Drout,  University of Toronto;}\\\small{ Gautham Narayan, STScI; Tyler A Pritchard, NYU; Tiago Ribeiro, LSST; 
 }}
 \date{\today}
 
@@ -65,25 +65,31 @@ We are proposing this cadence as a variation of the  `wide-fast-deep' (WFD) Main
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Scientific Motivation}
 
-The advent of wide-field time domain surveys has revolutionized the field of transient astrophysics. Coverage on \emph{short timescales}, in particular, has faciliated rapid strides in our understanding of both supernova (SN) explosions and peculiar transients. Observations of ``infant'' SN---obtained hours to days after explosion---provide vital constraints on their explosion mechanisms and progenitor systems. The emission at these epochs contains natal information about the progenitor characteristics [1-4], potential non-spherical behavior [5-6], and shock collision with a binary companion [7]. In addition, rapidly-evolving transients ($\lesssim$10 days) may be associated with a variety of poorly-understood events, including accretion-induced white dwarf collapse [8], underluminous and fallback SN [9], ultra-stripped SN [10-12], compact-object mergers [13,14], orphan GRB afterglows [15], and common-envelope ejections [X].
+The advent of wide-field time domain surveys has revolutionized the field of transient astrophysics. Coverage on \emph{short timescales}, in particular, has faciliated rapid strides in our understanding of both supernova (SN) explosions and peculiar transients. Observations of ``infant'' SN---obtained hours to days after explosion---evolve quickly and provide vital constraints on their explosion mechanisms and progenitor systems. The emission at these epochs contains natal information about the progenitor characteristics [1-4], potential non-spherical behavior [5-6], and shock collision with a binary companion [7]. In addition, rapidly-evolving transients ($\lesssim$10 days) may be associated with a variety of poorly-understood events, including accretion-induced white dwarf collapse [8], underluminous and fallback SN [9], ultra-stripped SN [10-12], compact-object mergers [13,14], orphan GRB afterglows [15], and common-envelope ejections [X].
 
 %Do need to emphasize a bit about rates, or make it clear that 
 %Need to mention ''fast features'' somewhere. They use that language. 
 
-Despite progress, the detection rate for both rapid transients and rapidly-evolving \emph{phases/features} in SN explosions has remained low---due to a combination of survey efficiency and intrinsic event rates. The volume surveyed by LSST brings the promise of detecting many more intrinsically rare events. However, \emph{using} these events to probe the science questions described herein requires adequate time- and filter-sampling of relatively short-lived events---sampling that will \emph{not} be achieved through the WFD survey alone. Thus, we require a cadence that allows us to effectively \emph{recognize} young and rapidly-evolving transients from within millions of LSST alerts in order to trigger additional follow-up. Such a cadence has two requirements: (1)~observations in two filters obtained in quick succession so that color can be measured, and (2)~a same-filter revisit within hours so the light-curve behaviour can be analyzed and distinguished from slower-evolving transients. 
+Despite progress, the detection rate for both rapid transients and rapidly-evolving \emph{phases} in SN explosions has remained low---due to a combination of survey efficiency and intrinsic event rates. The volume surveyed by LSST brings the promise of detecting many more intrinsically rare events. However, \emph{using} these events to probe the science questions described herein requires adequate time- and filter-sampling of relatively short-lived events---sampling that will \emph{not} be achieved through the WFD survey alone. Thus, we require a cadence that allows us to effectively \emph{recognize} young and rapidly-evolving transients from within millions of LSST alerts in order to trigger additional follow-up. Such a cadence has two requirements: 
+\begin{enumerate}
+    \item Observations in {\bf two filters} obtained in quick succession so that {\bf color} can be measured. This is critical to both allow us to distinguish different classes of transients and as a probe of the physics operating during these phases.
+    \vspace{-0.1in}
+    \item A {\bf same-filter} revisit separated by hours (before/after the filter pair) so the light-curve {\bf behaviour/slope} can be analyzed and distinguished from slower-evolving transients.
+\end{enumerate}
+%(1)~observations in two filters obtained in quick succession so that color can be measured, and (2)~a same-filter revisit within hours so the light-curve behaviour can be analyzed and distinguished from slower-evolving transients. 
 
 %More information on each of these: 
 %Light curve rise critical to distinguish from standard SN.
 %Color: critical for initial classification.
 
-As we will show, the WFD baseline survey's inter-night revisit rate of once every three nights is too sparse, and the intra-night revisit rate of $\sim$30 minutes is too rapid, to detect \enph{and recognize} fast transients/features. The exact form of our proposed cadence is given in Section 3. In order to define our diagnostics we have selected four exemplar types of extragalactic fast transients/features. Color and rate-of-change information for each type of transient is provided in Table 1, and main science cases are discussed below.
-
+As we will show, the WFD baseline survey's inter-night revisit rate of once every three nights is too sparse, and the intra-night revisit rate of $\sim$30 minutes is too rapid, to detect \emph{and recognize} fast transients/phases. The exact form of our proposed cadence is given in Section 3. In order to define our diagnostics we have selected four exemplar types of extragalactic fast transients/features. Representative light curves for each type of transient are shown in Figure~1, and graphical representations of where they separate from normal SN in color and intra-night rate-of-change are shown in Figure 2. Main science cases are discussed below.
+%basic color and rate-of-change information are provided in Table 1,
 \medskip
 
 
 %\smallskip
 
-\noindent {\bf I. The Nature of Rapidly-Evolving Luminous Transients:} ``Rapidly-evolving transients'' are defined as extragalactic events that reach SN luminosities but have timescales an order of magnitude faster [X]. To date, only a small number have been identified, but recent studies [31] have shown that they represent a significant channel ($\sim$5--10\% of the core-collapse rate) which we must understand to have a complete picture of stellar death. Known events have rise times spanning 1--3 days and blue colors at maximum  [x]. Leading theoretical models range from black hole formation to the birth of binary neutron star systems and recent observations of AT2018cow show evidence for a central engine [X,X]. More observations are required to understand their true nature and diversity. 
+\noindent {\bf I. The Nature of Rapidly-Evolving Luminous Transients:} ``Rapidly-evolving transients'' are defined as extragalactic events that reach SN luminosities but have timescales an order of magnitude faster [X]. To date, only a small number have been identified, but recent studies [31] have shown that they are not \emph{intrinsically} rare---few have been detected simply because surveys were not designed to be efficient at short timescales. They represent a significant channel ($\sim$5--10\% of the core-collapse rate) which we must understand to have a complete picture of stellar death. Known events have rise times spanning 1--3 days and blue colors at maximum  [x]. While their true nature is, as yet, unknown, leading theoretical models range from black hole formation during failed SN to the birth of binary neutron star systems, with recent observations of AT2018cow show evidence for a central engine [X,X]. %More observations are required to understand their true nature and diversity. 
 %They are luminous, blue, 
 
 %More events are required to determine the nature and 
@@ -94,30 +100,32 @@ As we will show, the WFD baseline survey's inter-night revisit rate of once ever
 
 \smallskip
 \noindent {\bf II. Kilonovae and the Origin of Heavy Elements:} 
-Kilonova (KN) are produced by the radioactive decay of r-process nuclei synthesized in the ejecta of neutron star mergers [X].  Observations of the KN associated with GW170817 revealed thermal emission that rose in $<$ 1 day and cooled from a temperature of $>$10,000K to 3,000K over 5 days, followed by a longer-lived IR transient [X]---consistent with the production of a signifcant quantity of of r-process elements of \emph{multiple} compositions.  Additional examples---with or without associated LIGO triggers---are required to ascertain the ``typicalness'' of GW170817, with the frequency of early blue emission providing critical constraints on the ratio of light and heavy elements formed, and therefore the total contribution of NS mergers to cosmic nucleosynthesis. 
+Kilonova (KN) are produced by the radioactive decay of r-process nuclei synthesized in the ejecta of neutron star mergers [X].  Observations of the KN associated with GW170817 revealed thermal emission that rose in $<$ 1 day and cooled from a temperature of $>$10,000K to 3,000K over 5 days. The initially blue optical light faded at a rate of $>$1 mag/day, and was followed by a longer-lived red transient [X]---consistent with the production of a signifcant quantity of of r-process elements of \emph{multiple} compositions.  Additional examples---with or without associated LIGO triggers---are required to ascertain the ``typicalness'' of GW170817, with the frequency of early blue emission providing critical constraints on the ratio of light and heavy elements formed, and therefore the total contribution of NS mergers to cosmic nucleosynthesis. 
 %Ejecta composition and quantity strongly influences the resulting \emph{color}, \emph{magnitude}, and \emph{timescale} of the emission.
+%thermal emission that rose in $<$ 1 day and cooled from a temperature of $>$10,000K to 3,000K over 5 days, followed by a longer-lived IR transient [X]
+%thermal emission that rose in $<$ 1 day and cooled from a temperature of $>$10,000K to 3,000K over 5 days
 
 \smallskip
-\noindent {\bf III. Progentiors and Pre-explosion Mass Loss of Core-Collapse SN:} Early observations of core-collapse SN (CCSN) provide critical constraints on the progenitor radius and envelope structure through the detection of either shock breakout ($\sim$1 day) or cooling envelope ($\sim$1-4 day) emission. Indeed, in recent years, there has been growing evidence that many CCSN either explode in ``non-standard'' evolutionary states or undergo enhanced pre-SN mass-loss and outbursts in their terminal years [23,X,X]. Theoretical studies have pointed to a range of potential explanations to accommodate the observations, such as pulsation-driven superwinds [24], wave heating outbursts [25], and inflated progenitor envelope [26]. However, the nature of this mass loss and the types of SN experiencing it remain uncertain.
+\noindent {\bf III. Progentiors and Pre-explosion Mass Loss of Core-Collapse SN:} Early observations of core-collapse SN (CCSN) provide critical constraints on the progenitor radius and envelope structure through the detection of either shock breakout ($\sim$1 day) or cooling envelope ($\sim$1-5 day) emission. Indeed, in recent years, there has been growing evidence that many CCSN either explode in ``non-standard'' evolutionary states or undergo enhanced pre-SN mass-loss and outbursts in their terminal years [23,X,X]. Theoretical studies have pointed to a range of potential explanations to accommodate the observations, such as pulsation-driven superwinds [24], wave heating outbursts [25], and inflated progenitor envelope [26]. However, the nature of this mass loss and the types of SN experiencing it remain uncertain.
 
 
 
 \smallskip
 \noindent {\bf IV. Progenitors and Explosion Mechanisms of Thermonuclear SN:}
-Type Ia SN result from the thermonuclear distruption of a CO white dwarf [18]. However, questions remain regarding the nature of their binary companions. Recently, observations of SN2017cbv obtained within $\sim$1 day of explosion revealed a rapidly-rising blue ``bump'', interpreted by some as a collision with a non-degenerate companion [19], while preliminary population studies reveal an as-yet-unexplained red/blue color dichotomy in the early ($<$ 5 days) rising light curves of Type Ia SN [X], with implications for outwardly mixed radioactive material predicted by the double detonation explosion model [X]. Further observations are required to ascertain the nature of this early emission, with implications from stellar physics to cosmology. 
+Type Ia SN result from the thermonuclear distruption of a CO white dwarf [18]. However, questions remain regarding the nature of their binary companions. Recently, observations of SN2017cbv obtained within $\sim$1 day of explosion revealed a rapidly-rising blue ``bump'', interpreted by some as a collision with a non-degenerate companion [19]. At the same time preliminary population studies reveal an as-yet-unexplained red/blue color dichotomy in the early ($<$ 5 days) rapidly-rising light curves of Type Ia SN [X], with implications for outwardly mixed radioactive material predicted by the double detonation explosion model [X]. Further observations are required to ascertain the nature of this early emission, with implications from stellar physics to cosmology. 
 
 
 
 
 \smallskip
-\noindent {\bf V. Additional Science Cases:} While we have focused on extragalactic fast transients here, a cadence that allows measurement of both color and rate-of-change on the timescale of $\sim$hours will have general applicability across many areas---from variable stars to microlensing.
+\noindent {\bf V. Additional Science Cases:} While we have focused on extragalactic fast transients here, a cadence that allows measurement of both color and rate-of-change on the timescale of $\sim$hours will have general applicability across many areas---from variable stars and microlensing to characterization of solar system objects.
 
 \medskip
-Finally, though we describe here an adaptation to the general WFD cadence to facilitate the timely identification of rapid events, our cadence could alternatively be adopted as a mini-survey over a portion of the sky. If coupled with a shorter intra-night cadence (as part of a mini-survey or due to a rolling candence) LSST observations alone could provide sufficient light curve coverage to probe progenitors and explosion physics of fast transients/features.
+Finally, though we describe here an adaptation to the general WFD cadence to facilitate the timely identification of rapid events, our cadence could alternatively be adopted as a mini-survey over a portion of the sky. If coupled with a shorter intra-night cadence (as part of a mini-survey or due to a rolling candence) LSST observations alone could provide sufficient light curve coverage to probe progenitors and explosion physics of fast transients/phases.
 
 \bigskip
 
-\noindent {\bf MRD Note: I'm still working to clean this up and cut some text. A few things could move to later sections. Ah, we now have more room! I will expand a few things slightly and fix the references.}
+%\noindent {\bf MRD Note: I'm still working to clean this up and cut some text. A few things could move to later sections. Ah, we now have more room! I will expand a few things slightly and fix the references.}
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -181,13 +189,14 @@ SNIa normal         & $\sim -1$     & $u-g\sim-0.2$, $g-r\sim-0.1$  \\
 
 \begin{center}
 \begin{figure}[!h]
-\includegraphics[width=6cm,height=5cm]{figures/Drout_PS1-10bjp.png}
-\includegraphics[width=6cm,height=5cm]{figures/Tanvir_fig2.jpg}
-\includegraphics[width=6cm,height=5cm]{figures/Bersten_16kgk.jpg}
-\includegraphics[width=6cm,height=5cm]{figures/Hosseinzadeh_17cbv.png}
-\caption{Light curves for our examples of fast transients and fast features. Top left: Fast transient PS1-10bjp \citep{2014ApJ...794...23D}. Top right: Kilonovae for GW170817 \citep{2017ApJ...848L..27T}. Bottom left: Shock breakout for SN\,2016kgk \citep{2018Natur.554..497B}. Bottom right: SN\,Ia 2017cbv's blue bump \citep{2017ApJ...845L..11H}. }
+\includegraphics[width=5cm,height=4.5cm]{figures/Drout_PS1-10bjp.png}
+%\includegraphics[width=6cm,height=5cm]{figures/Tanvir_fig2.jpg}
+\includegraphics[width=5cm,height=4.5cm]{figures/Bersten_16kgk.jpg}
+\includegraphics[width=5cm,height=4.5cm]{figures/Hosseinzadeh_17cbv.png}
+\caption{Light curves for our examples of fast transients and fast features. \emph{Left:} Fast transient PS1-10bjp \citep{2014ApJ...794...23D}.  \emph{Middle:} Shock breakout and cooling envelope for SN\,2016gkg \citep{2018Natur.554..497B}. \emph{Right:} SN\,Ia 2017cbv's blue bump \citep{2017ApJ...845L..11H}. }
 \end{figure}
 \end{center}
+%Top right: Kilonovae for GW170817 \citep{2017ApJ...848L..27T}.
 
 \clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -350,7 +359,8 @@ The metric is the fraction of events for which the color and risetime is constra
 The science goals that motivate the proposed cadence in this white paper will not require any data processing outside of the planned Prompt and Data Release pipelines and their data products. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bibliographystyle{aasjournal}
+%\bibliographystyle{aasjournal}
+\bibliographystyle{ieeetr}
 
 \bibliography{main}
 
