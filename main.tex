@@ -54,10 +54,8 @@ We propose a cadence for the LSST survey in which three visits are obtained per 
 \section{White Paper Information}
 \begin{enumerate} 
 \item {\bf Science Category:} Exploring the Transient Sky, Dark Energy
-\item {\bf Survey Type Category:} 
-We are proposing this cadence as a variation of the  `wide-fast-deep' (WFD) Main Survey, but it could also be considered for implementation as a Mini-Survey or a Deep Drilling Field, observing only a portion of the sky. 
-\item {\bf Observing Strategy Category:} 
-   a specific observing strategy to enable specific time domain science, that is relatively agnostic to where the telescope is pointed. 
+\item {\bf Survey Type Category:} We are proposing this cadence as a variation of the  ``Wide-Fast-Deep" (WFD) Main Survey, but it could also be considered for implementation as a Mini-Survey or a Deep Drilling Field, and done in only a portion of the sky. 
+\item {\bf Observing Strategy Category:} This is an observing strategy to enable specific time domain science, which is relatively agnostic to where the telescope is pointed. 
 \end{enumerate}  
 
 
@@ -187,7 +185,15 @@ Finally, though we describe here an adaptation to the general WFD cadence to fac
 \includegraphics[width=4cm,height=4cm]{figures/Tanvir_fig2_remake.pdf}
 \includegraphics[width=4cm,height=4cm]{figures/2016gkg.pdf}
 \includegraphics[width=4.2cm,height=4.2cm]{figures/bluebump.png}
-\caption{{\footnotesize Light curves for our examples of fast transients and fast features. From left to right: fast transient PS1-10bjp \citep{2014ApJ...794...23D}; kilonova for GW170817 \citep{2017ApJ...848L..27T}; the shock breakout model fits for SN\,IIb 2016gkg's stellar radius \citep{2018Natur.554..497B}; SN\,Ia 2017cbv's blue bump compared to SN\,Ia 2011fe's ``normal" light-curve \citep{2017ApJ...845L..11H,2015MNRAS.446.2073G}. }}
+\caption{{\footnotesize Light curves for our examples of fast transients and fast features. From left to right: fast transient PS1-10bjp \citep{2014ApJ...794...23D}; kilonova for GW170817 \citep{2017ApJ...848L..27T}; the shock breakout model fits for SN\,IIb 2016gkg's stellar radius \citep{2018Natur.554..497B}; and SN\,Ia 2017cbv's blue bump compared to SN\,Ia 2011fe's ``normal" light-curve \citep{2017ApJ...845L..11H,2015MNRAS.446.2073G}. }}
+\end{figure}
+\end{center}
+
+\begin{center}
+\begin{figure}[!h]
+\includegraphics[width=8cm,height=8cm]{figures/.pdf}
+\includegraphics[width=8cm,height=8cm]{figures/.pdf}
+\caption{{\footnotesize PLACEHOLDER FOR MRD'S PLOTS}. }}
 \end{figure}
 \end{center}
 
@@ -203,7 +209,7 @@ Finally, though we describe here an adaptation to the general WFD cadence to fac
 %{\it Describe or illustrate your ideal sequence of observations.}
 %\end{footnotesize}
 
-The prompt characterization of these transients, which enables the triggering of crucial follow up observations, requires determination of \emph{both color and lightcurve shape}. This in turns requires observations in 2 different filters within a short interval of time \dtone  and to return to the same field with one of those filter at a later time \dttwo.  The constraints on these timeline are :
+The prompt characterization of fast transients and fast features of transients, which enables the triggering of crucial follow up observations, requires the determination of \emph{both color and lightcurve shape}. This, in turn, requires observations in 2 different filters within a short interval of time \dtone\ and to return to the same field with one of those filters at a later time \dttwo. The constraints on these timeline are:
 \begin{enumerate}
     \item max(\dtone )
     \item min(\dttwo )
@@ -251,9 +257,7 @@ The proposed cadence requires at least 3 visits per night.
 \begin{footnotesize}{\it Constraints on the timing of visits --- within a night, between nights, between seasons or between years (which could be relevant for rolling cadence choices in the WideFastDeep. Please describe optimum visit timing as well as acceptable limits on visit timing, and options in case of missed visits (due to weather, etc.). If this timing should include particular sequences of filters, please describe.}
 \end{footnotesize}
 
-Three observations in 2 filters, 2 in different filters separated by $\lesssim45$ minutes, returning to the field in the same night with either one of the filters in $\gtrsim90$ minutes.
-
-We furthermore note that the science goals motivating this cadence -- namely, well-characterized light curves for rapid events -- have overlap with the science motivations of a rolling cadence. Our proposed cadence would benefit from being implemented in regions where rolling cadence is applied (i.e., an intranight gap $<3$ days).
+Three observations in 2 filters, 2 in different filters separated by \dtone\ minutes, returning to the field in the same night with either one of the filters in \dttwo\ minutes. We furthermore note that the science goals which motivate {\em Presto-Color} -- namely, well-characterized light curves for rapid events -- have overlap with the science motivations of a rolling cadence. This proposed cadence would benefit from being implemented in regions where rolling cadence is applied (i.e., an intranight gap $<3$ days).
 
 
 \subsection{Filter choice}
@@ -261,7 +265,7 @@ We furthermore note that the science goals motivating this cadence -- namely, we
 {\it Please describe any filter constraints not included above.}
 \end{footnotesize}
 
-Filters should be pair with a gap in the sequence: g-i or r-z.                                                       
+Filters should be pair with a gap in the sequence: $g-i$ or $r-z$.                                                       
 \subsection{Exposure constraints}
 \begin{footnotesize}
 {\it Describe any constraints on the minimum or maximum exposure time per visit required (or alternatively, saturation limits). Please comment on any constraints on the number of exposures in a visit.}
@@ -274,7 +278,7 @@ This proposed cadence uses the baseline exposure times of $2\times15$ seconds or
 {\it Any other constraints.}
 \end{footnotesize}
 
-We propose that this cadence be implemented on extragalactic fields, but note that it may also be useful in some Galactic Plane fields to detect and characterize microlensing events on short timescales, binary stars, and black holes, for example. Trade-offs and synergies with other proposals are discussed further in Section 3.12, Item 5.
+We propose that {\em Presto-Color} be implemented on extragalactic fields, but note that it may also be useful in some Galactic Plane fields to detect and characterize microlensing events on short timescales, binary stars, and black holes, for example. Trade-offs and synergies with other proposals are discussed further in Section 3.12, Item 5.
 
 
 \subsection{Estimated time requirement}
@@ -288,7 +292,7 @@ Since our proposed cadence is a modification of the WFD strategy -- a shuffling 
 
 \begin{table}[ht]
     \centering
-    \begin{tabular}{l|l|l|l}
+    \begin{tabular}{|l|l|l|l}
         \toprule
         Properties & Importance \hspace{.3in} \\
         \midrule
