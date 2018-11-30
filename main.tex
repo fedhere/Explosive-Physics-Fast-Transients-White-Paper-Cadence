@@ -38,7 +38,7 @@
 %%% macroe %%%
 \newcommand{\dtone}{\ensuremath{\Delta T_1}}
 \newcommand{\dttwo}{\ensuremath{\Delta T_2}}
-\title{Explosive Physics \& Fast Transients LSST Cadence}
+\title{{\em Presto-Color:} An LSST Cadence for \\ Explosive Physics \& Fast Transients}
 \author{\small{Federica B. Bianco\footnote{fbianco@nyu.edu}, NYU CUSP/CCPP NYU, University of Delaware;}\\\small{Melissa Graham, University of Washington;}\\\small{Igor Andreoni, Caltech; Rahul Biswas, Stockholm University Philip Cowperthwaite,}\\\small{Carnegie; Maria Drout, Dunlap Institute, University of Toronto;}\\\small{Gautham Narayan, STScI; Tyler A Pritchard, NYU; Tiago Ribeiro, LSST; 
 }}
 \date{\today}
@@ -48,7 +48,7 @@
 \maketitle
 
 \begin{abstract}
-We propose a cadence for the LSST survey in which three visits are obtained per night: two different filters within a short time window (e.g., $g$ \& $i$ or $r$ \& $z$ within $\sim1$ hour) and a repeat of one of those filters with a longer time window (e.g., $\sim4$ hours). We colloquially refer to this as the {\em Presto-Colores} strategy (quick-colors). This observing strategy delivers both the color and lightcurve evolution of transients on the same night. This will enable us to identify and characterize fast transients -- or fast features of longer timescale transients -- such as rapidly-declining supernovae (SNe), kilonovae (KNe), and the signatures of SN ejecta interacting with binary companion stars or circumstellar material. Such extragalactic transients are intrinsically rare, thus LSST could dramatically improve our understanding of their origin and properties. This cadence can be implemented as a Mini-Survey or as part of a Wide-Fast-Deep survey on selected portions of the extragalactic sky.
+We propose a cadence for the LSST survey in which three visits are obtained per night: two different filters within a short time window (e.g., $g$ \& $i$ or $r$ \& $z$ within $\sim1$ hour) and a repeat of one of those filters with a longer time window (e.g., $\sim4$ hours). We colloquially refer to this as the {\em Presto-Color} strategy (quick-color). This observing strategy delivers both the color and light-curve evolution of transients on the same night. This will enable us to identify and characterize fast transients -- or fast features of longer timescale transients -- such as rapidly-declining supernovae (SNe), kilonovae (KNe), and the signatures of SN ejecta interacting with binary companion stars or circumstellar material. Such extragalactic transients are intrinsically rare, thus LSST could dramatically improve our understanding of their origin and properties. This cadence can be implemented as a Mini-Survey or as part of a Wide-Fast-Deep survey on selected portions of the extragalactic sky.
 \end{abstract}
 
 \section{White Paper Information}
@@ -76,7 +76,7 @@ Despite progress, the detection rate for both rapid transients and rapidly-evolv
 %Light curve rise critical to distinguish from standard SN.
 %Color: critical for initial classification.
 
-As we will show, the WFD baseline survey's inter-night revisit rate of once every three nights is too sparse, and the intra-night revisit rate of $\sim$30 minutes is too rapid, to detect \enph{and recognize} fast transients/features. The exact form of our proposed cadence is given in Section 3. In order to define our diagnostics we have selected four exemplar types of extragalactic fast transients/features. Color and rate-of-change information for each type of transient is provided in Table 1, and main science cases are discussed below.
+As we will show, the WFD baseline survey's inter-night revisit rate of once every three nights is too sparse, and the intra-night revisit rate of $\sim$30 minutes is too rapid, to detect \emph{and recognize} fast transients/features. The exact form of our proposed cadence is given in Section 3. In order to define our diagnostics we have selected four exemplar types of extragalactic fast transients/features. Color and rate-of-change information for each type of transient, and the main science goals for each, are discussed below.
 
 \medskip
 
@@ -159,33 +159,35 @@ Finally, though we describe here an adaptation to the general WFD cadence to fac
 
 \clearpage
 
-\begin{footnotesize}
-\begin{center}
-\title{The early-time colors and rise rates of fast transients/features.}\label{tab:1}
-\begin{tabular}{|c|c|c|} 
-\hline
-Target Type         & $g$-band $dm/dt$ [$\rm mag\ day^{-1}$] & color [$\rm mag$] \\
-\hline 
-fast transients     & $\gtrsim-0.8$ & $g-r\leq-0.2$  \\ 
-kilonovae           & $>11$          & $r-Y\sim0.5$  \\ 
-CCSN shock breakout & $\sim-10$     & blue at $<1$ day, then neutral  \\ 
-SNIa blue bumps     & $\gtrsim -1$  & $u-g\sim-0.6$, $g-r\sim-0.2$  \\ 
-SNIa normal         & $\sim -1$     & $u-g\sim-0.2$, $g-r\sim-0.1$  \\
-%point-Ia (Bildsten) &  &  &  &  &  & \\ 
-%IIb+CSM &  &  &  &  &  & \\ 
-%AIC &  &  &  &  &  & \\ 
-\hline
-\end{tabular}
-\end{center}
-\end{footnotesize}
+%%% MLG 11/29: Commented out table, we won't need it once Maria's new plots are integrated.
+%%% MLG also removed references to this table from the text.
+% \begin{footnotesize}
+% \begin{center}
+% \title{The early-time colors and rise rates of fast transients/features.}\label{tab:1}
+% \begin{tabular}{|c|c|c|} 
+% \hline
+% Target Type         & $g$-band $dm/dt$ [$\rm mag\ day^{-1}$] & color [$\rm mag$] \\
+% \hline 
+% fast transients     & $\gtrsim-0.8$ & $g-r\leq-0.2$  \\ 
+% kilonovae           & $>11$          & $r-Y\sim0.5$  \\ 
+% CCSN shock breakout & $\sim-10$     & blue at $<1$ day, then neutral  \\ 
+% SNIa blue bumps     & $\gtrsim -1$  & $u-g\sim-0.6$, $g-r\sim-0.2$  \\ 
+% SNIa normal         & $\sim -1$     & $u-g\sim-0.2$, $g-r\sim-0.1$  \\
+% %point-Ia (Bildsten) &  &  &  &  &  & \\ 
+% %IIb+CSM &  &  &  &  &  & \\ 
+% %AIC &  &  &  &  &  & \\ 
+% \hline
+% \end{tabular}
+% \end{center}
+% \end{footnotesize}
 
 \begin{center}
 \begin{figure}[!h]
-\includegraphics[width=6cm,height=5cm]{figures/Drout_PS1-10bjp.png}
-\includegraphics[width=6cm,height=5cm]{figures/Tanvir_fig2.jpg}
-\includegraphics[width=6cm,height=5cm]{figures/Bersten_16kgk.jpg}
-\includegraphics[width=6cm,height=5cm]{figures/Hosseinzadeh_17cbv.png}
-\caption{Light curves for our examples of fast transients and fast features. Top left: Fast transient PS1-10bjp \citep{2014ApJ...794...23D}. Top right: Kilonovae for GW170817 \citep{2017ApJ...848L..27T}. Bottom left: Shock breakout for SN\,2016kgk \citep{2018Natur.554..497B}. Bottom right: SN\,Ia 2017cbv's blue bump \citep{2017ApJ...845L..11H}. }
+\includegraphics[width=4cm,height=4cm]{figures/Drout_PS1-10bjp.png}
+\includegraphics[width=4cm,height=4cm]{figures/Tanvir_fig2.jpg}
+\includegraphics[width=4cm,height=4cm]{figures/cartoon_16gkg.jpg}
+\includegraphics[width=4cm,height=4cm]{figures/bluebump.png}
+\caption{Light curves for our examples of fast transients and fast features. From left to right: fast transient PS1-10bjp \citep{2014ApJ...794...23D}; kilonova for GW170817 \citep{2017ApJ...848L..27T}; a simple cartoon of the shock breakout model fits for SN\,2016gkg's stellar radius \citep{2018Natur.554..497B}; SN\,Ia 2017cbv's blue bump compared to SN\,Ia 2011fe's ``normal" light-curve \citep{2017ApJ...845L..11H}. }
 \end{figure}
 \end{center}
 
