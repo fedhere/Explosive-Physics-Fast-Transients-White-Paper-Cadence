@@ -1,0 +1,44 @@
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\href{#1}{#1}}
+\providecommand{\dodoi}[1]{doi:~\href{http://doi.org/#1}{\nolinkurl{#1}}}
+\providecommand{\doeprint}[1]{\href{http://ascl.net/#1}{\nolinkurl{http://ascl.net/#1}}}
+\providecommand{\doarXiv}[1]{\href{https://arxiv.org/abs/#1}{\nolinkurl{https://arxiv.org/abs/#1}}}
+
+\bibitem[{{Bersten} {et~al.}(2018){Bersten}, {Folatelli}, {Garc{\'{\i}}a}, {van
+  Dyk}, {Benvenuto}, {Orellana}, {Buso}, {S{\'a}nchez}, {Tanaka}, {Maeda},
+  {Filippenko}, {Zheng}, {Brink}, {Cenko}, {de Jaeger}, {Kumar}, {Moriya},
+  {Nomoto}, {Perley}, {Shivvers}, \& {Smith}}]{2018Natur.554..497B}
+{Bersten}, M.~C., {Folatelli}, G., {Garc{\'{\i}}a}, F., {et~al.} 2018, \nat,
+  554, 497, \dodoi{10.1038/nature25151}
+
+\bibitem[{{Drout} {et~al.}(2014){Drout}, {Chornock}, {Soderberg}, {Sanders},
+  {McKinnon}, {Rest}, {Foley}, {Milisavljevic}, {Margutti}, {Berger},
+  {Calkins}, {Fong}, {Gezari}, {Huber}, {Kankare}, {Kirshner}, {Leibler},
+  {Lunnan}, {Mattila}, {Marion}, {Narayan}, {Riess}, {Roth}, {Scolnic},
+  {Smartt}, {Tonry}, {Burgett}, {Chambers}, {Hodapp}, {Jedicke}, {Kaiser},
+  {Magnier}, {Metcalfe}, {Morgan}, {Price}, \& {Waters}}]{2014ApJ...794...23D}
+{Drout}, M.~R., {Chornock}, R., {Soderberg}, A.~M., {et~al.} 2014, \apj, 794,
+  23, \dodoi{10.1088/0004-637X/794/1/23}
+
+\bibitem[{{Hosseinzadeh} {et~al.}(2017){Hosseinzadeh}, {Sand}, {Valenti},
+  {Brown}, {Howell}, {McCully}, {Kasen}, {Arcavi}, {Azalee Bostroem},
+  {Tartaglia}, {Hsiao}, {Davis}, {Shahbandeh}, \&
+  {Stritzinger}}]{2017ApJ...845L..11H}
+{Hosseinzadeh}, G., {Sand}, D.~J., {Valenti}, S., {et~al.} 2017, \apjl, 845,
+  L11, \dodoi{10.3847/2041-8213/aa8402}
+
+\bibitem[{{Tanvir} {et~al.}(2017){Tanvir}, {Levan},
+  {Gonz{\'a}lez-Fern{\'a}ndez}, {Korobkin}, {Mandel}, {Rosswog}, {Hjorth},
+  {D'Avanzo}, {Fruchter}, {Fryer}, {Kangas}, {Milvang-Jensen}, {Rosetti},
+  {Steeghs}, {Wollaeger}, {Cano}, {Copperwheat}, {Covino}, {D'Elia}, {de Ugarte
+  Postigo}, {Evans}, {Even}, {Fairhurst}, {Figuera Jaimes}, {Fontes}, {Fujii},
+  {Fynbo}, {Gompertz}, {Greiner}, {Hodosan}, {Irwin}, {Jakobsson},
+  {J{\o}rgensen}, {Kann}, {Lyman}, {Malesani}, {McMahon}, {Melandri},
+  {O'Brien}, {Osborne}, {Palazzi}, {Perley}, {Pian}, {Piranomonte}, {Rabus},
+  {Rol}, {Rowlinson}, {Schulze}, {Sutton}, {Th{\"o}ne}, {Ulaczyk}, {Watson},
+  {Wiersema}, \& {Wijers}}]{2017ApJ...848L..27T}
+{Tanvir}, N.~R., {Levan}, A.~J., {Gonz{\'a}lez-Fern{\'a}ndez}, C., {et~al.}
+  2017, \apjl, 848, L27, \dodoi{10.3847/2041-8213/aa90b6}
+
+\end{thebibliography}
