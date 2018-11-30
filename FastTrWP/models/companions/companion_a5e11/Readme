@@ -1,0 +1,45 @@
+this folder contains dan's spectra averaged over 1 day (t00[0-9]). 
+each file represents a different viewing angle (...mu=viewing angle).
+angle are shortened by omitting the decimal part. here is a list of the full lenth value for the angle, the integer part of which is in the file name.
+# mu 0 =     167.1616
+# mu 1 =     157.6685
+# mu 2 =     151.0451
+# mu 3 =     145.5886
+# mu 4 =     140.8052
+# mu 5 =     136.4690
+# mu 6 =     132.4543
+# mu 7 =     128.6823
+# mu 8 =     125.0997
+# mu 9 =     121.6683
+# mu 10 =     118.3595
+# mu 11 =     115.1508
+# mu 12 =     112.0244
+# mu 13 =     108.9657
+# mu 14 =     105.9621
+# mu 15 =     103.0030
+# mu 16 =     100.0787
+# mu 17 =      97.1808
+# mu 18 =      94.3013
+# mu 19 =      91.4326
+# mu 20 =      88.5675
+# mu 21 =      85.6989
+# mu 22 =      82.8193
+# mu 23 =      79.9214
+# mu 24 =      76.9972
+# mu 25 =      74.0380
+# mu 26 =      71.0345
+# mu 27 =      67.9757
+# mu 28 =      64.8494
+# mu 29 =      61.6407
+# mu 30 =      58.3318
+# mu 31 =      54.9004
+# mu 32 =      51.3179
+# mu 33 =      47.5459
+# mu 34 =      43.5312
+# mu 35 =      39.1950
+# mu 36 =      34.4115
+# mu 37 =      28.9550
+# mu 38 =      22.3317
+# mu 39 =      12.8386
+
+
