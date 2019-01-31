@@ -418,6 +418,15 @@ if __name__ == '__main__':
         if idx.any():
             ax.scatter(X[:, 0], X[:, 1], marker='o', c='none', edgecolor='k',
                        alpha=0.5)
+        pl.errorbar(0, -1.25, xerr=0.006, color='k', capsize=3)
+        pl.errorbar(0, -1.5, xerr=0.039, color='k', capsize=3)
+        pl.errorbar(0, -1.75, xerr=0.255, color='k', capsize=3)        
+        pl.errorbar(0, -1.25, xerr=0.006*3, color='k', alpha = 0.5, lw=0.5)
+        pl.errorbar(0, -1.5, xerr=0.039*3, color='k', alpha = 0.5, lw=0.5)
+        pl.errorbar(0, -1.75, xerr=0.253*3, color='k', alpha = 0.5, lw=0.5)
+        pl.text(0.006*3+0.05, -1.25, r"$g=20$", va='center')
+        pl.text(0.039*3+0.05, -1.5, r"$g=22$", va='center')
+        pl.text(0.253*3+0.05, -1.75, r"$g=24$", va='center')
 
         ax.set_xlabel(r"$\Delta$ mag", fontsize=18)
         ax.set_ylabel(r"color", fontsize=18)
