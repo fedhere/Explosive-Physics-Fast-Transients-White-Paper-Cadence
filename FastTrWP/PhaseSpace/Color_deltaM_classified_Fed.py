@@ -20,7 +20,7 @@ import numpy as np
 from numpy.polynomial import polynomial as P
 import sys
 from itertools import permutations, repeat
-from Calculate_ColorDelta import Calculate_ColorDelta
+from Calculate_ColorDelta_Fed import Calculate_ColorDelta
 #Bokeh setup
 from bokeh.plotting import figure,output_file,show, ColumnDataSource, gridplot
 import glob
@@ -365,8 +365,10 @@ if __name__ == '__main__':
         ax.plot(shape[-N + int(N / 3):], color[-N + int(N / 3):], '.', c='SteelBlue',
                 alpha=0.03, ms=2)            
         ax.plot(shape[:-N], color[:-N], '.', c='IndianRed', alpha=0.5, ms=2)
-        ax.set_xlim(-0.7, 1.45)
-        ax.set_ylim(-1.2, 4.2)
+        xmin, xmax = -0.7, 1.45
+        ymin, ymax = -2, 4.2
+        ax.set_xlim(xmin, xmax)
+        ax.set_ylim(ymin, ymax)
         ax.text(1.0, 3.0, r"$\Delta t_1 = %.1f$"%i[0], fontsize=18)
         ax.text(1.0, 2.5, r"$\Delta t_2 = %.1f$"%i[1], fontsize=18)
         #pl.draw()
@@ -396,8 +398,8 @@ if __name__ == '__main__':
                          phasespace_complete[:,1].max()+0.1, 100).T
         '''
         resolution = 50
-        xx = np.linspace(-0.7, 1.45, resolution)
-        yy = np.linspace(-1.2, 4.2, resolution)
+        xx = np.linspace(xmin, xmax, resolution)
+        yy = np.linspace(ymin, ymax, resolution)
         xx, yy = np.meshgrid(xx, yy)
         Xfull = np.c_[xx.ravel(), yy.ravel()]
         probas = clf.predict_proba(Xfull)
@@ -406,8 +408,8 @@ if __name__ == '__main__':
         n_classes = np.unique(y_pred).size
         
         imshow_handle = ax.imshow(probas[:, 0].reshape((resolution, resolution)),
-                                   extent=(-0.7, 1.45,
-                                           -1.2, 4.2),
+                                   extent=(xmin, xmax,
+                                           ymin, ymax),
                                   norm=mpl.colors.Normalize(vmin=0, vmax=1),
                                   cmap='BrBG', aspect='auto', origin='lower')
 
