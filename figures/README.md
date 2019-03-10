@@ -1,18 +1,12 @@
 
 The files:
-[2016gkg.pdf](2016gkg.pdf)
-
-[Bersten_16kgk.jpg](Bersten_16kgk.jpg)
-
-[Drout_PS1-10bjp.png](Drout_PS1-10bjp.png)
-
-[Hosseinzadeh_17cbv.png](Hosseinzadeh_17cbv.png)
-
-[Tanvir_fig2_remake.pdf](Tanvir_fig2_remake.pdf)
-
-[bluebump.png](bluebump.png)
-
-[cartoon_16gkg.jpg](cartoon_16gkg.jpg)
+[2016gkg.pdf](2016gkg.pdf),
+ [Bersten_16kgk.jpg](Bersten_16kgk.jpg), 
+ [Drout_PS1-10bjp.png](Drout_PS1-10bjp.png),
+ [Hosseinzadeh_17cbv.png](Hosseinzadeh_17cbv.png),
+ [Tanvir_fig2_remake.pdf](Tanvir_fig2_remake.pdf),
+ [bluebump.png](bluebump.png),
+ [cartoon_16gkg.jpg](cartoon_16gkg.jpg)
 
 are combined in Paper figure 1 and are generated through a design interface. 
 
