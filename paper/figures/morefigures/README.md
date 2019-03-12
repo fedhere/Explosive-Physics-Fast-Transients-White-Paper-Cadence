@@ -7,7 +7,7 @@ The files:
 [Hosseinzadeh_17cbv.png](Hosseinzadeh_17cbv.png),
 [Tanvir_fig2pdf](Tanvir_fig2_remake.pdf),
 [cartoon_16gkg.jpg](cartoon_16gkg.jpg)
- are the original figures (from those papers as per name) which originated the cartoon figures in Fig 1 of our paper. The final version of our figure panels are in [../figures](../figure)
+ are the original figures (from those papers as per name) which originated the cartoon figures in Fig 1 of our paper. The final version of our figure panels are in [figures](https://github.com/fedhere/prestocolor/tree/master/paper/figures)
 Those are ultimately combined in Paper figure 1 and are generated through a design interface. 
 
 [highLevelCadence.png](highLevelCadence.png) is the original version of Paper figure 2 and is a high level, schematic representation of the cadence implementation for LSST, and it is generated through a design interface (as it was in the White Paper submission) 
