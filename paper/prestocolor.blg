@@ -1,0 +1,126 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: prestocolor.aux
+The style file: aasjournal.bst
+I found no \bibdata command---while reading file prestocolor.aux
+Warning--I didn't find a database entry for "Metzger2009"
+Warning--I didn't find a database entry for "Moriya2010"
+Warning--I didn't find a database entry for "Drout2013"
+Warning--I didn't find a database entry for "Kasliwal2010"
+Warning--I didn't find a database entry for "Tauris2015"
+Warning--I didn't find a database entry for "De2018"
+Warning--I didn't find a database entry for "Kasen2015"
+Warning--I didn't find a database entry for "Metzger2010"
+Warning--I didn't find a database entry for "Totani2002"
+Warning--I didn't find a database entry for "Blagorodnova2017"
+Warning--I didn't find a database entry for "Nakar2010"
+Warning--I didn't find a database entry for "Rabinak2011"
+Warning--I didn't find a database entry for "Nugent2011"
+Warning--I didn't find a database entry for "Matzner2013"
+Warning--I didn't find a database entry for "Salbi2014"
+Warning--I didn't find a database entry for "Kasen2010"
+Warning--I didn't find a database entry for "ztf"
+Warning--I didn't find a database entry for "lsst"
+Warning--I didn't find a database entry for "COSEP"
+Warning--I didn't find a database entry for "Drout2014"
+Warning--I didn't find a database entry for "Tanvir2017"
+Warning--I didn't find a database entry for "Bersten2018"
+Warning--I didn't find a database entry for "Hosseinzadeh2017"
+Warning--I didn't find a database entry for "Graham2015"
+Warning--I didn't find a database entry for "Pirsiainen2018"
+Warning--I didn't find a database entry for "Rest2018"
+Warning--I didn't find a database entry for "Kashiyama2015"
+Warning--I didn't find a database entry for "Prentice2018"
+Warning--I didn't find a database entry for "Margutti2018"
+Warning--I didn't find a database entry for "Li1998"
+Warning--I didn't find a database entry for "MetzgerKN"
+Warning--I didn't find a database entry for "Tanvir13"
+Warning--I didn't find a database entry for "Berger13"
+Warning--I didn't find a database entry for "Jin15"
+Warning--I didn't find a database entry for "Aasi15"
+Warning--I didn't find a database entry for "Acernese15"
+Warning--I didn't find a database entry for "Abbott2017"
+Warning--I didn't find a database entry for "Drout2017"
+Warning--I didn't find a database entry for "Cowp+17"
+Warning--I didn't find a database entry for "Villar2017"
+Warning--I didn't find a database entry for "Smartt2017"
+Warning--I didn't find a database entry for "Kasliwal2017"
+Warning--I didn't find a database entry for "Rosswog2018"
+Warning--I didn't find a database entry for "Piro2018"
+Warning--I didn't find a database entry for "Metzger2018"
+Warning--I didn't find a database entry for "Andreoni2018"
+Warning--I didn't find a database entry for "Modjaz2009"
+Warning--I didn't find a database entry for "Arcavi2011"
+Warning--I didn't find a database entry for "Khazov2016"
+Warning--I didn't find a database entry for "Nakar2014"
+Warning--I didn't find a database entry for "Yoon2010"
+Warning--I didn't find a database entry for "Fuller2017"
+Warning--I didn't find a database entry for "Grafener2012"
+Warning--I didn't find a database entry for "Hillebrandt2000"
+Warning--I didn't find a database entry for "2011PhDT........37D"
+Warning--I didn't find a database entry for "2013PhDT.......326H"
+Warning--I didn't find a database entry for "Bianco11"
+Warning--I didn't find a database entry for "Hayden2010"
+Warning--I didn't find a database entry for "Stritzinger2018"
+Warning--I didn't find a database entry for "Piro2016"
+Warning--I didn't find a database entry for "Polin2018"
+Warning--I didn't find a database entry for "streetWP"
+Warning--I didn't find a database entry for "Bricman2018"
+Warning--I didn't find a database entry for "Gezari2018"
+Warning--I didn't find a database entry for "opsim"
+Warning--I didn't find a database entry for "sncosmo"
+Warning--I didn't find a database entry for "salt2"
+Warning--I didn't find a database entry for "Kessler2010"
+Warning--I didn't find a database entry for "sncsp"
+Warning--I didn't find a database entry for "plasticc"
+Warning--I didn't find a database entry for "Rasmussen06gaussianprocesses"
+Warning--I didn't find a database entry for "scikit-learn"
+Warning--I didn't find a database entry for "oliver2008"
+Warning--I didn't find a database entry for "Jha2017"
+Warning--I didn't find a database entry for "maf"
+Warning--I didn't find a database entry for "astropy2013"
+Warning--I didn't find a database entry for "astropy2018"
+Warning--I didn't find a database entry for "Gorski05"
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+You've used 0 entries,
+            3166 wiz_defined-function locations,
+            792 strings with 6067 characters,
+and the built_in function-call counts, 28 in all, are:
+= -- 0
+> -- 0
+< -- 0
++ -- 0
+- -- 0
+* -- 0
+:= -- 8
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 0
+duplicate$ -- 0
+empty$ -- 1
+format.name$ -- 0
+if$ -- 1
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 8
+num.names$ -- 0
+pop$ -- 0
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 1
+stack$ -- 0
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 0
+width$ -- 0
+write$ -- 7
+(There was 1 error message)
