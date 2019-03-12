@@ -13,107 +13,34 @@ Use:
 NOTE: for now take g and i band colors... 
 Can adjust the delta t between g-band.
 Should generalize to more colors etc.'''
-
+import os
+import pickle
 from astropy.io import ascii
 import numpy as np
 from numpy.polynomial import polynomial as P
 import sys
 from itertools import permutations, repeat
-from Calculate_ColorDelta import Calculate_ColorDelta
+from Calculate_ColorDelta_Fed import Calculate_ColorDelta
 #Bokeh setup
 from bokeh.plotting import figure,output_file,show, ColumnDataSource, gridplot
 import glob
 from sklearn.svm import SVC
-
 import pandas as pd
 
 from sklearn.gaussian_process import GaussianProcessClassifier
 from sklearn.gaussian_process.kernels import RBF
 from sklearn import datasets
-from Color_deltaM_PhaseSpace import *
+from sklearn.svm import SVC
+import pylab as pl
+from sklearn.metrics import accuracy_score
 
-def readdata():
-    #-KILONOVAE------------------------------------------------------------
-    dataGW = ascii.read('LightCurves/Formatted/GW170817.dat')
-    #colorGW,deltamagGW = Calculate_ColorDelta(dataGW['g'],dataGW['i'],delta_t,color_t)
+import matplotlib as mpl
 
-    #-RED-KILONOVAE-----------------------------------------------
-    dataGWr = ascii.read('LightCurves/Formatted/GW170817red.dat')
-    #colorGWr,deltamagGWr = Calculate_ColorDelta(dataGWr['g'],dataGWr['i'],delta_t,color_t)
+#from Color_deltaM_PhaseSpace import *
 
-
-    #-RISING COOLING ENVELOPE (16gkg)------------------------------
-    dataIIb = ascii.read('LightCurves/Formatted/SN2016gkg_poly_e.dat')
-    #colorIIb_e,deltamagIIb_e = Calculate_ColorDelta(dataIIb['g'],dataIIb['i'],delta_t,color_t)
-
-    #-DECLINING COOLING ENVELOPE (16gkg)------------------------------
-    dataIIb_l = ascii.read('LightCurves/Formatted/SN2016gkg_poly_l.dat')
-    #colorIIb_l,deltamagIIb_l = Calculate_ColorDelta(dataIIb_l['g'],dataIIb_l['i'],delta_t,color_t)
-
-
-    #-EARLY TYPE IA SN--(< 6 days from explosion)------------------
-    #-SN2017cbv----------------------------------------------------
-    dataIa = ascii.read('LightCurves/Formatted/SN2017cbv_poly_e.dat')
-    #colorIa_e,deltamagIa_e = Calculate_ColorDelta(dataIa['g'],dataIa['i'],delta_t,color_t)
-
-    #-SN2011fe------------------------------------------------------
-    dataIa2 = ascii.read('LightCurves/Formatted/SN2011fe_poly_e.dat')
-    #colorIa2,deltamagIa2 = Calculate_ColorDelta(dataIa2['g'],dataIa2['i'],delta_t,color_t)
-
-
-    #-NORMAL TYPE IA SN (> 10 days post-explosion-----------------_
-    #-SN2017cbv----------------------------------------------------
-    dataIa_l = ascii.read('LightCurves/Formatted/SN2017cbv_poly_l.dat')
-    #colorIa_l,deltamagIa_l = Calculate_ColorDelta(dataIa_l['g'],dataIa_l['i'],delta_t,color_t)
-
-    #-SN2011fe------------------------------------------------------
-    dataIa2_l = ascii.read('LightCurves/Formatted/SN2011fe_poly_l.dat')
-    #colorIa2_l,deltamagIa2_l = Calculate_ColorDelta(dataIa2_l['g'],dataIa2_l['i'],delta_t,color_t)
-
-
-    #-FBOTS: RISING PHASE-----------------------------------------
-    #-PS10bjp-----------------------------------------------------
-    dataFB2 = ascii.read('LightCurves/Formatted/PS10bjp_rise.dat')
-    #colorFB2,deltamagFB2 = Calculate_ColorDelta(dataFB2['g'],dataFB2['i'],delta_t,color_t)
-
-    #-PS10ah-----------------------------------------------------
-    dataFB3 = ascii.read('LightCurves/Formatted/PS10ah_rise.dat')
-    #colorFB3,deltamagFB3 = Calculate_ColorDelta(dataFB3['g'],dataFB3['i'],delta_t,color_t)
-
-    #-PS12brf-----------------------------------------------------
-    dataFB4 = ascii.read('LightCurves/Formatted/PS12brf_rise.dat')
-    #colorFB4,deltamagFB4 = Calculate_ColorDelta(dataFB4['g'],dataFB4['i'],delta_t,color_t)
-
-
-    #-FBOTS: DECLINING PHASE--------------------------------------
-    #-PS10ah------------------------------------------------------
-    dataFB3b = ascii.read('LightCurves/Formatted/PS10ah_decline.dat')
-    #colorFB3b,deltamagFB3b = Calculate_ColorDelta(dataFB3b['g'],dataFB3b['i'],delta_t,color_t)
-
-    #-PS12brf------------------------------------------------------
-    dataFB4b = ascii.read('LightCurves/Formatted/PS12brf_decline.dat')
-    #colorFB4b,deltamagFB4b = Calculate_ColorDelta(dataFB4b['g'],dataFB4b['i'],delta_t,color_t)
-
-    #-PS11qr--------------------------------------------------------
-    dataFB6 = ascii.read('LightCurves/Formatted/PS11qr_decline.dat')
-    #colorFB6,deltamagFB6 = Calculate_ColorDelta(dataFB6['g'],dataFB6['i'],delta_t,color_t)
-
-    #-AT2018cow------------------------------------------------------
-    dataFB7 = ascii.read('LightCurves/Formatted/AT2018cow_decline.dat')
-    #colorFB7,deltamagFB7 = Calculate_ColorDelta(dataFB7['g'],dataFB7['i'],delta_t,color_t)
-    dataFB5 = ascii.read('LightCurves/Formatted/SN2005ek_decline.dat')
-
-    sne = []
-    for i,f in enumerate(glob.glob("IAs/*.csv")):
-        sne.append(ascii.read(f))
-
-    returnvalue = (dataGW, dataGWr, dataIIb, dataIIb_l,
-                   dataIa, dataIa2, dataIa_l, dataIa2_l,
-                   dataFB2, dataFB3, dataFB4, dataFB3b,
-                   dataFB4b, dataFB6, dataFB7, dataFB5,
-                   [sn for sn in sne])
-    return returnvalue
-
+TRAINING = 10
+#REFIT = True
+REFIT = False
 
 
 def plotBK(data):
@@ -194,23 +121,138 @@ def plotBK(data):
     
     
     show(p)
+
+def readdata():
+
+    rawdata = {}
+    rawdata['annotations'] = {}
+    
+    #-KILONOVAE------------------------------------------------------------
+    rawdata['GW'] = ascii.read('LightCurves/Formatted/GW170817.dat')
+    rawdata['annotations']['GW'] = 'kilonova'
+    #colorGW,deltamagGW = Calculate_ColorDelta(dataGW['g'],dataGW['i'],delta_t,color_t)
+
+    #-RED-KILONOVAE-----------------------------------------------
+    rawdata['GWr'] = ascii.read('LightCurves/Formatted/GW170817red.dat')
+    rawdata['annotations']['GWr'] = 'red kilonova'
+    #colorGWr,deltamagGWr = Calculate_ColorDelta(dataGWr['g'],dataGWr['i'],delta_t,color_t)
+
+
+    #-RISING COOLING ENVELOPE (16gkg)------------------------------
+    rawdata['IIb'] = ascii.read('LightCurves/Formatted/SN2016gkg_poly_e.dat')
+    rawdata['annotations']['IIb'] = 'RISING COOLING ENVELOPE 16gkg'
+    #colorIIb_e,deltamagIIb_e = Calculate_ColorDelta(dataIIb['g'],dataIIb['i'],delta_t,color_t)
+
+    #-DECLINING COOLING ENVELOPE (16gkg)------------------------------
+    rawdata['IIb_l'] = ascii.read('LightCurves/Formatted/SN2016gkg_poly_l.dat')
+    rawdata['annotations']['IIb_l'] = 'DECLINING COOLING ENVELOPE 16gkg'
+    #colorIIb_l,deltamagIIb_l = Calculate_ColorDelta(dataIIb_l['g'],dataIIb_l['i'],delta_t,color_t)
+
+
+    #-EARLY TYPE IA SN--(< 6 days from explosion)------------------
+    #-SN2017cbv----------------------------------------------------
+    rawdata['Ia'] = ascii.read('LightCurves/Formatted/SN2017cbv_poly_e.dat')
+    rawdata['annotations']['Ia'] = 'EARLY TYPE IA SN--(< 6 days from explosion)'
+    #colorIa_e,deltamagIa_e = Calculate_ColorDelta(dataIa['g'],dataIa['i'],delta_t,color_t)
+
+    #-SN2011fe------------------------------------------------------
+    rawdata['Ia2'] = ascii.read('LightCurves/Formatted/SN2011fe_poly_e.dat')
+    rawdata['annotations']['Ia2'] = 'sn2011fe'
+    #colorIa2,deltamagIa2 = Calculate_ColorDelta(dataIa2['g'],dataIa2['i'],delta_t,color_t)
+
+
+    #-NORMAL TYPE IA SN (> 10 days post-explosion-----------------_
+    #-SN2017cbv----------------------------------------------------
+    rawdata['Ia_l'] = ascii.read('LightCurves/Formatted/SN2017cbv_poly_l.dat')
+    rawdata['annotations']['Ia_l'] = 'NORMAL TYPE IA SN (> 10 days post-explosion 17cbv'
+    #colorIa_l,deltamagIa_l = Calculate_ColorDelta(dataIa_l['g'],dataIa_l['i'],delta_t,color_t)
+
+    #-SN2011fe------------------------------------------------------
+    rawdata['Ia2_l'] = ascii.read('LightCurves/Formatted/SN2011fe_poly_l.dat')
+    rawdata['annotations']['Ia2_l'] = '2011fe ?? what is the difference between this and Ia2??'
+    #colorIa2_l,deltamagIa2_l = Calculate_ColorDelta(dataIa2_l['g'],dataIa2_l['i'],delta_t,color_t)
+
+
+    #-FBOTS: RISING PHASE-----------------------------------------
+    #-PS10bjp-----------------------------------------------------
+    rawdata['FB2'] = ascii.read('LightCurves/Formatted/PS10bjp_rise.dat')
+    rawdata['annotations']['FB2'] = 'PS10bjp fbot'
+    #colorFB2,deltamagFB2 = Calculate_ColorDelta(dataFB2['g'],dataFB2['i'],delta_t,color_t)
+
+    #-PS10ah-----------------------------------------------------
+    rawdata['FB3'] = ascii.read('LightCurves/Formatted/PS10ah_rise.dat')
+    rawdata['annotations']['FB3'] = 'PS10ah fbot'
+    #colorFB3,deltamagFB3 = Calculate_ColorDelta(dataFB3['g'],dataFB3['i'],delta_t,color_t)
+
+    #-PS12brf-----------------------------------------------------
+    rawdata['FB4'] = ascii.read('LightCurves/Formatted/PS12brf_rise.dat')
+    rawdata['annotations']['FB4'] = ' PS12br fbot'
+    #colorFB4,deltamagFB4 = Calculate_ColorDelta(dataFB4['g'],dataFB4['i'],delta_t,color_t)
+
+
+    #-FBOTS: DECLINING PHASE--------------------------------------
+    #-PS10ah------------------------------------------------------
+    rawdata['FB3b'] = ascii.read('LightCurves/Formatted/PS10ah_decline.dat')
+    rawdata['annotations']['FB3b'] = 'PS10ah declining'
+    #colorFB3b,deltamagFB3b = Calculate_ColorDelta(dataFB3b['g'],dataFB3b['i'],delta_t,color_t)
+
+    #-PS12brf------------------------------------------------------
+    rawdata['FB4b'] = ascii.read('LightCurves/Formatted/PS12brf_decline.dat')
+    rawdata['annotations']['FB4b'] = 'PS12brf fbot'
+    #colorFB4b,deltamagFB4b = Calculate_ColorDelta(dataFB4b['g'],dataFB4b['i'],delta_t,color_t)
+
+    #-PS11qr--------------------------------------------------------
+    rawdata['FB6'] = ascii.read('LightCurves/Formatted/PS11qr_decline.dat')
+    rawdata['annotations']['FB6'] = 'PS11qr fbot'
+    #colorFB6,deltamagFB6 = Calculate_ColorDelta(dataFB6['g'],dataFB6['i'],delta_t,color_t)
+
+    #-AT2018cow------------------------------------------------------
+    rawdata['FB7'] = ascii.read('LightCurves/Formatted/AT2018cow_decline.dat')
+    rawdata['annotations']['FB7'] = 'AT2018cow fbot'
+    #colorFB7,deltamagFB7 = Calculate_ColorDelta(dataFB7['g'],dataFB7['i'],delta_t,color_t)
+
+    
+    rawdata['FB5'] = ascii.read('LightCurves/Formatted/SN2005ek_decline.dat')
+    rawdata['annotations']['FB5'] = 'SN2005ek decline'
+
+
+    #-------------------------NORMALS--------------------------------
+    #----------------------------------------------------------------
+
+    #-IIs------------------------------------------------------------
+
+
+    
+    for i,f in enumerate(glob.glob("IIs/*.dat")):
+        rawdata['sn_II_%i'%i] = ascii.read(f, format='csv', delimiter="\t")  
+        rawdata['annotations']['snII_%i'%i] = f
+
+    #-Ia's------------------------------------------------------------    
+    for i,f in enumerate(glob.glob("IAs/*.csv")):
+        rawdata['sn_%i'%i] = ascii.read(f)
+        rawdata['annotations']['sn_%i'%i] = f
+        
+    #returnvalue = (dataGW, dataGWr, dataIIb, dataIIb_l,
+     #              dataIa, dataIa2, dataIa_l, dataIa2_l,
+     #              dataFB2, dataFB3, dataFB4, dataFB3b,
+     #              dataFB4b, dataFB6, dataFB7, dataFB5,
+     #              [sn for sn in sne])
+    return rawdata
+
+
     
 def getcdt(datain,
            delta_t=3.0, color_t=.5):
     
-    dataGW, dataGWr,dataIIb, dataIIb_l, \
+    '''dataGW, dataGWr,dataIIb, dataIIb_l, \
         dataIa, dataIa2, dataIa_l, dataIa2_l,\
         dataFB2, dataFB3, dataFB4, dataFB3b, \
         dataFB4b, dataFB6, dataFB7, dataFB5, \
         sne = datain
-    
+    '''
            #Set some initial parameters:
     #delta_t = 3.0 #set in terms of number of hours. Should always be in units of 0.5 hours.
     #color_t = 0. #set in hours. Must either be 0 or 0.5 (for 30 minutes)
-
-    step = np.int(delta_t/0.5)
-    color_step = np.int(color_t/0.5)
-
 
     ######Reading in all the files: This will swap out when I finalize all of the new template models.
     ######I am almost done writing out all of the new templates so we won't do the interpolation in code,
@@ -219,197 +261,186 @@ def getcdt(datain,
     ######This version of the code contains: blue and red KN. 16gkg cooling envelope, Type Ia with blue bump
     ######The Type Ia is separated into (a) early LC (first 5 days post explosion and (b) Standard (10+ days post).
 
-    #------------------------------------------------
+    
+    returnvalue = []
 
-    color_t = 0. #set in hours. Must either be 0 or 0.5 (for 30 minutes)
-    
-    #----------------------------------------------------------------------
-    #-READ IN TEMPLATES----------------------------------------------------
-    #----------------------------------------------------------------------
-    
-    #-KILONOVAE------------------------------------------------------------
-    colorGW,deltamagGW = Calculate_ColorDelta(dataGW['g'],dataGW['i'],delta_t,color_t)
-    
-    #-RED-KILONOVAE-----------------------------------------------
-    colorGWr,deltamagGWr = Calculate_ColorDelta(dataGWr['g'],dataGWr['i'],delta_t,color_t)
-    
-    
-    #-RISING COOLING ENVELOPE (16gkg)------------------------------
-
-    colorIIb_e,deltamagIIb_e = Calculate_ColorDelta(dataIIb['g'],dataIIb['i'],delta_t,color_t)
-    
-    #-DECLINING COOLING ENVELOPE (16gkg)------------------------------
-    colorIIb_l,deltamagIIb_l = Calculate_ColorDelta(dataIIb_l['g'],dataIIb_l['i'],delta_t,color_t)
-    
-    
-    #-EARLY TYPE IA SN--(< 6 days from explosion)------------------
-    #-SN2017cbv----------------------------------------------------
-    colorIa_e,deltamagIa_e = Calculate_ColorDelta(dataIa['g'],dataIa['i'],delta_t,color_t)
-
-    #-SN2011fe------------------------------------------------------
-    colorIa2,deltamagIa2 = Calculate_ColorDelta(dataIa2['g'],dataIa2['i'],delta_t,color_t)
-    
-    
-    #-NORMAL TYPE IA SN (> 10 days post-explosion-----------------_
-    #-SN2017cbv----------------------------------------------------
-    colorIa_l,deltamagIa_l = Calculate_ColorDelta(dataIa_l['g'],dataIa_l['i'],delta_t,color_t)
-    
-    #-SN2011fe------------------------------------------------------
-    colorIa2_l,deltamagIa2_l = Calculate_ColorDelta(dataIa2_l['g'],dataIa2_l['i'],delta_t,color_t)
-    
-    
-    #-FBOTS: RISING PHASE-----------------------------------------
-    #-PS10bjp-----------------------------------------------------
-    colorFB2,deltamagFB2 = Calculate_ColorDelta(dataFB2['g'],dataFB2['i'],delta_t,color_t)
-    
-    #-PS10ah-----------------------------------------------------
-    colorFB3,deltamagFB3 = Calculate_ColorDelta(dataFB3['g'],dataFB3['i'],delta_t,color_t)
-    
-    #-PS12brf-----------------------------------------------------
-    colorFB4,deltamagFB4 = Calculate_ColorDelta(dataFB4['g'],dataFB4['i'],delta_t,color_t)
-    
-    
-    #-FBOTS: DECLINING PHASE--------------------------------------
-    #-PS10ah------------------------------------------------------
-    colorFB3b,deltamagFB3b = Calculate_ColorDelta(dataFB3b['g'],dataFB3b['i'],delta_t,color_t)
-    
-    #-PS12brf------------------------------------------------------
-    colorFB4b,deltamagFB4b = Calculate_ColorDelta(dataFB4b['g'],dataFB4b['i'],delta_t,color_t)
-    
-    #-PS11qr--------------------------------------------------------
-    colorFB6,deltamagFB6 = Calculate_ColorDelta(dataFB6['g'],dataFB6['i'],delta_t,color_t)
-    
-    #-AT2018cow------------------------------------------------------
-    colorFB7,deltamagFB7 = Calculate_ColorDelta(dataFB7['g'],dataFB7['i'],delta_t,color_t)
-
-    
-    #-RAPIDLY DECLINING TYPE I------------------------------------
-    #-SN2005ek----------------------------------------------------
-    colorFB5,deltamagFB5 = Calculate_ColorDelta(dataFB5['g'],dataFB5['i'],delta_t,color_t)
-
-    normals = []
-    for i,sn in enumerate(sne):
-        sn = sn[(sn['time-rel'] < 10*20) * (sn['time-rel'] > -7*20)]
-        normals.append(Calculate_ColorDelta(sn['g'], sn['i'], delta_t, color_t))
-
-    returnvalue =  [colorIa_e,deltamagIa_e,
-                    colorIa2,deltamagIa2 ,
-                    colorIa_l,deltamagIa_l,
-                    colorIa2_l,deltamagIa2_l,
-                    colorGW,deltamagGW ,
-                    colorGWr,deltamagGWr,
-                    colorIIb_e,deltamagIIb_e,
-                    colorIIb_l,deltamagIIb_l,
-                    colorFB2,deltamagFB2,
-                    colorFB3,deltamagFB3,
-                    colorFB4,deltamagFB4,
-                    colorFB3b,deltamagFB3b,
-                    colorFB4b,deltamagFB4b,
-                    colorFB6,deltamagFB6,
-                    colorFB7,deltamagFB7,
-                    colorFB5,deltamagFB5, normals, len(normals)]
-
+    Calculate_ColorDelta(datain['GW']['g'], datain['GW']['i'],
+                         delta_t, color_t)
+    for k in datain.keys():
+        returnvalue.append(Calculate_ColorDelta(datain[k]['g'],
+                                                datain[k]['i'],
+                                                delta_t,
+                                                color_t))
     return returnvalue
-    
 
 
 
-'''
-        
-tmp = readdata()
-
-tmp2 = getcdt(data[0], data[1], data[2], data[3], data[4],
-           delta_t=3.0, color_t=3.0)
-
-plot(tmp2)
-
-'''
-from sklearn.svm import SVC
-import pylab as pl
-
-from sklearn.metrics import accuracy_score
 
 
-dt1 = [1.5]#[0.5, 1.5, 3.5]#[0.5,1,1.5,2.5,3.5,4.5,5.5,6.5]
-dt2 = [0.5]#[0,0.5,1]
+
+dt1 = [1.5]#, 0.5, 3.5, 4.5, 6.5]#[0.5,1,1.5,2.5,3.5,4.5,5.5,6.5] #gap between obs in same filter
+dt2 = [0.5]#, 0, 1, 2] #gap between filters
 data = readdata()
 
-newdata = []
-for i,d in enumerate(data[:-2]):
-    newdata.append(d[d['time-rel'] < 15*24])
+#print(data['GWr'])
+newdata = {}
 
-newdata.append(data[-2])
-newdata.append(data[-1])               
+for i,did in enumerate(data):
+    if did == 'annotations':
+        continue
+    #[:-2]):
+
+    d = data[did]   
+    indices = d['time-rel'] < 15*24
+    indices = d['time-rel'] > -21*24    
+    newdata[did] = d[indices]
+
+    #pl.plot(d[d['time-rel'])
+#newdata.append(data[-2])
+#newdata.append(data[-1])               
                
     #d = d[d['time-rel'] < 30]
 #pl.ion()
 
 if __name__ == '__main__':
-    print("here")
     kernel = 1.0 * RBF([1.0, 1.0])
-    clf = GaussianProcessClassifier(kernel)
- 
+    if REFIT:
+        clf = GaussianProcessClassifier(kernel)
+    #print(np.array([k for k in newdata.keys()]))
+    nspecial = np.sum(~np.array([k.startswith('sn_') for k in newdata.keys()]))
+    #number of normal IIs
+    nII = np.sum(np.array([k.startswith('sn_II_') for k in newdata.keys()]))
     for i in [(t1, t2) for t1 in dt1 for t2 in dt2]:
         print(i)
+        thisdir = "GPclassifier_%.1f_%.1f"%i
+        os.system("mkdir " + thisdir)
         tmp2 = getcdt(newdata,
                   delta_t=i[0], color_t=i[1])
-
         
-        color = np.concatenate([tmp2[i*2] for i in range(15)])
-        shape = np.concatenate([tmp2[i*2+1] for i in range(15)])
+        
+        color = np.hstack([t[0] for t in tmp2[:nspecial]])
+        shape = np.hstack([t[1] for t in tmp2[:nspecial]])
         #nsnIa = np.array([len(tmp2[i-2]) for i in range(4)]).sum()
-        iacolor = np.concatenate([sn[0] for sn in tmp2[-2]])
-        iashape = np.concatenate([sn[1] for sn in tmp2[-2]])
-        N = len(color)
-        randIa = np.random.randint(0, len(iacolor), N)
-        plotcolor = ['IndianRed'] * N + ['k'] * N
-        label = np.concatenate([np.zeros(N), np.ones(N)])
-        indx = np.random.randint(0,len(label),size=int(N/2))
+        iicolor = np.hstack([t[0] for t in tmp2[nspecial:nspecial+nII]])
+        iishape = np.hstack([t[1] for t in tmp2[nspecial:nspecial+nII]])
 
-        print(len(color), N + len(iacolor), len(plotcolor), len(label))
+        N = color.shape[0]
+        nii = iicolor.shape[0]
+
+        iacolor = np.hstack([t[0] for t in tmp2[nspecial+nII:]])
+        iashape = np.hstack([t[1] for t in tmp2[nspecial+nII:]])
+        nia = iacolor.shape[0]        
+
+        np.random.seed(123)
         
-        color = np.concatenate([color, iacolor[randIa]])
-        shape = np.concatenate([shape, iashape[randIa]])
+        # pick boring transients: 1/3 II and 1/2 Ia
+        randIa = np.random.randint(0, len(iacolor), int(2 * N / 3))
+        randII = np.random.randint(0, len(iicolor), int(N / 3))
 
-        X = np.array([shape, color]).T[indx]
-        y = label[indx]
+        plotcolor = ['IndianRed'] * N + ['c'] * N
+        label = np.hstack([np.zeros(N), np.ones(N)])
+        #print(N, len(label))
         
-        xx = np.linspace(X.T[0].min(), X.T[0].max(), 100)
-        yy = np.linspace(X.T[1].min(), X.T[1].max(), 100).T
-        xx, yy = np.meshgrid(xx, yy)
-        Xfull = np.c_[xx.ravel(), yy.ravel()]
+        color = np.hstack([color, iicolor[randII], iacolor[randIa]])
+        shape = np.hstack([shape, iishape[randII], iashape[randIa]])
+        #print(color.min(), color.max())
+        #print(shape.min(), shape.max())        
+                # pick a TRAINING fraction 
+        indx = np.random.randint(0, len(label), size=int(N/TRAINING))
+        #print(min(indx), max(indx))
 
-        pl.plot(shape[-N:], color[-N:], '.', c='k', alpha=0.01)    
-        pl.plot(shape[:-N], color[:-N], '.', c='IndianRed')
-        pl.draw()
+        phasespace_complete = np.array([shape, color]).T
+        #print(phasespace_complete.shape)
+        
+        X = phasespace_complete[indx] #training set
+        y = label[indx] #training labels
+
+
+        fig = pl.figure(figsize=(10,5))
+        ax = fig.add_subplot(111)
+
+        ax.plot(shape[-N:-N + int(N / 3)], color[-N:-N + int(N / 3)],
+                '.', c='mediumpurple',
+                alpha=0.05, ms=2)
+        ax.plot(shape[-N + int(N / 3):], color[-N + int(N / 3):], '.', c='SteelBlue',
+                alpha=0.03, ms=2)            
+        ax.plot(shape[:-N], color[:-N], '.', c='IndianRed', alpha=0.5, ms=2)
+        xmin, xmax = -0.7, 1.45
+        ymin, ymax = -2, 4.2
+        ax.set_xlim(xmin, xmax)
+        ax.set_ylim(ymin, ymax)
+        ax.text(1.0, 3.0, r"$\Delta t_1 = %.1f$"%i[0], fontsize=18)
+        ax.text(1.0, 2.5, r"$\Delta t_2 = %.1f$"%i[1], fontsize=18)
+        #pl.draw()
         #nsnIa = np.array([len(tmp2[i-2]) for i in range(4)]).sum()
         
         #label = np.zeros(len(color))
         #label[:nsnIa] = 1
 
-        clf.fit(X, y)
+        if REFIT:
+            clf.fit(X, y)
+            pickle.dump(clf, open(thisdir+"/GPmodel.pkl", 'wb'))
+        else:
+            # load the model from disk
+            clf = pickle.load(open(thisdir+"/GPmodel.pkl", 'rb'))
+            
 
         y_pred = clf.predict(X)
+        #in sample accuracy
         accuracy = accuracy_score(y, y_pred)
         print("Accuracy (train) for %0.1f%% " % (accuracy * 100))
 
-        # View probabilities:
+        #calculate probability everywhere in the phase space
+        '''
+        xx = np.linspace(phasespace_complete[:,0].min()-0.1,
+                         phasespace_complete[:,0].max()+0.1, 100)
+        yy = np.linspace(phasespace_complete[:,1].min()-0.1,
+                         phasespace_complete[:,1].max()+0.1, 100).T
+        '''
+        resolution = 50
+        xx = np.linspace(xmin, xmax, resolution)
+        yy = np.linspace(ymin, ymax, resolution)
+        xx, yy = np.meshgrid(xx, yy)
+        Xfull = np.c_[xx.ravel(), yy.ravel()]
         probas = clf.predict_proba(Xfull)
+
+        # View probabilities:
         n_classes = np.unique(y_pred).size
         
-        imshow_handle = pl.imshow(probas[:, 0].reshape((100, 100)),
-                                   extent=(X.T[0].min(),
-                                            X.T[0].max(), X.T[1].min(),
-                                            X.T[1].max()), 
-                                           aspect='auto', origin='lower')
+        imshow_handle = ax.imshow(probas[:, 0].reshape((resolution, resolution)),
+                                   extent=(xmin, xmax,
+                                           ymin, ymax),
+                                  norm=mpl.colors.Normalize(vmin=0, vmax=1),
+                                  cmap='BrBG', aspect='auto', origin='lower')
+
+        
         idx = (y_pred == 0)
         if idx.any():
-            pl.scatter(X[idx, 0], X[idx, 1], marker='o', c='w', edgecolor='k')
+            ax.scatter(X[:, 0], X[:, 1], marker='o', c='none', edgecolor='k',
+                       alpha=0.5)
 
-        pl.title("Probability")
-        pl.show()
-        input()
+        ax.set_xlabel(r"$\Delta$ mag", fontsize=18)
+        ax.set_ylabel(r"color", fontsize=18)
+        cbaxes = fig.add_axes([0.125, 0.9, 0.775, 0.02]) 
+        cbaxes.set_title("Probability of unusual transient")
+
+
+        cb = pl.colorbar(imshow_handle, orientation='horizontal', cax=cbaxes,
+                         ticks=[0, 0.25, 0.5, 0.75, 1],
+                         norm=mpl.colors.Normalize(vmin=0.01, vmax=0.99))
+        cb.ax.xaxis.set_ticks_position('top')
+        cb.ax.set_yticklabels(['0', '0.25', '0.5', '0.75', '1'])
         
+        #cb.ax.set_xlim(0,1)
+        #, boundaries=[0,1])
+        #pl.draw()
+        mask = np.array([~(i in indx)
+                            for i in range(len(np.array([shape, color]).T))])
+
+        y_predOUT = clf.predict(np.array([shape, color]).T[mask])
+        yOUT = label[mask]
+        print (len(yOUT),  accuracy_score(yOUT, y_predOUT))
+        pl.savefig(thisdir + "/GPclassifier_%.1f_%.1f.png"%i)
         
         '''
         XX, YY = np.mgrid[shape.min():shape.max():200j,
@@ -459,7 +490,7 @@ Xfull = np.c_[xx.ravel(), yy.ravel()]
 if 1:
     y_pred = clf.predict(X)
     accuracy = accuracy_score(y, y_pred)
-    print("Accuracy (train) for  %0.1f%% " %( accuracy * 100))
+    print("Accuracy (trai) for  %0.1f%% " %( accuracy * 100))
 
     # View probabilities:
     probas = clf.predict_proba(Xfull)

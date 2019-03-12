@@ -1,7 +1,8 @@
 '''Function to calculate the vectors for the delta_mag and color give a set of inputs.'''
 import numpy as np
 
-def Calculate_ColorDelta(g_array, i_array, delta_t, color_t):
+
+def Calculate_ColorDelta(m_array, i_array, delta_t, color_t):
     '''
     :param g_array: array of g-band magnitudes, already interpolated to 30 min timesteps
     :param i_array: array of i-band magnitudes, already interpolated to 30 min timesteps
@@ -12,9 +13,8 @@ def Calculate_ColorDelta(g_array, i_array, delta_t, color_t):
     #print(len(g_array))
     mag_step = np.int(delta_t / 0.5)
     color_step = np.int(color_t / 0.5)
-
-    nmts = len(g_array) - mag_step
-    ncts = len(g_array) - color_step    
+    nmts = len(m_array) - mag_step
+    ncts = len(m_array) - color_step    
     # color = list()
     #deltamag = list()
 
@@ -29,11 +29,13 @@ def Calculate_ColorDelta(g_array, i_array, delta_t, color_t):
     
     #color = np.array(color)
     #deltamag = np.array(deltamag)
+
+
     if color_step > 0.:
-        recolor = g_array[:-color_step] -  i_array[color_step:]
+        recolor = m_array[:-color_step] -  i_array[color_step:]
     else:
-        recolor = g_array -  i_array
-    redeltamag = g_array[:-mag_step] - g_array[mag_step:]
+        recolor = m_array -  i_array
+    redeltamag = m_array[:-mag_step] - m_array[mag_step:]
 
     # pick only points with color and shape info (depends in the gaps)
     nmax = min(recolor.shape[0], redeltamag.shape[0]) 

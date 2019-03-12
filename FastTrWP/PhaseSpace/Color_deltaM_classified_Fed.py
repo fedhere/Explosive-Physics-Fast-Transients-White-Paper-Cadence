@@ -15,6 +15,8 @@ Can adjust the delta t between g-band.
 Should generalize to more colors etc.'''
 import os
 import pickle
+import astropy
+from astropy import table
 from astropy.io import ascii
 import numpy as np
 from numpy.polynomial import polynomial as P
@@ -39,9 +41,46 @@ import matplotlib as mpl
 #from Color_deltaM_PhaseSpace import *
 
 TRAINING = 10
-#REFIT = True
-REFIT = False
+REFIT = True
+#REFIT = False
 
+
+uncertainties = {
+	 0.5 :{
+	 	 20 : 0.0036805434210936175 ,
+	 	 22 : 0.02324963391758477 ,
+	 	 24 : 0.14848038385122814
+         },
+	 1.5 :{
+	 	 20 : 0.0036609946331738925 ,
+	 	 22 : 0.023086178726518435 ,
+	 	 24 : 0.14731023948912864
+		},
+	 2.5 :{
+	 	 20 : 0.003636774972382853 ,
+	 	 22 : 0.022945183179903274 ,
+	 	 24 : 0.14630828843513077
+		},
+	 3.5 :{
+	 	 20 : 0.0036106951340395548 ,
+	 	 22 : 0.02279123289337615 ,
+	 	 24 : 0.14535441153622383
+		},
+	 4.5 :{
+	 	 20 : 0.003589672175230205 ,
+	 	 22 : 0.022679764733939723 ,
+	 	 24 : 0.1446558183035918
+		},
+	 5.5 :{
+	 	 20 : 0.0035702090577145627 ,
+	 	 22 : 0.022547760784633507 ,
+	 	 24 : 0.14369581163117698
+		},
+	 6.5 :{
+	 	 20 : 0.003546650350651556 ,
+	 	 22 : 0.022407921518101725 ,
+	 	 24 : 0.1426822563280088
+		}}
 
 def plotBK(data):
     colorIa_e, deltamagIa_e,\
@@ -122,7 +161,7 @@ def plotBK(data):
     
     show(p)
 
-def readdata():
+def readdata2():
 
     rawdata = {}
     rawdata['annotations'] = {}
@@ -211,10 +250,19 @@ def readdata():
     rawdata['annotations']['FB7'] = 'AT2018cow fbot'
     #colorFB7,deltamagFB7 = Calculate_ColorDelta(dataFB7['g'],dataFB7['i'],delta_t,color_t)
 
-    
     rawdata['FB5'] = ascii.read('LightCurves/Formatted/SN2005ek_decline.dat')
     rawdata['annotations']['FB5'] = 'SN2005ek decline'
 
+    import pandas as pd
+    for i,f in enumerate(glob.glob("LightCurves/plasticc/plasticc_[A-Z]*")):
+        #print(f)
+        rawdata['plasticc_%i'%i] = astropy.table.Table.read(f,
+                                                      format="ascii.csv",
+                                                      delimiter=" ")
+        print(rawdata['plasticc_%i'%i].columns)
+        #rawdata['plasticc_%i'%i]['time-rel'] *= 24
+        #rawdata['annotations']['plasticc_%i'%i] = f
+        #print (rawdata['plasticc_%i'%i])
 
     #-------------------------NORMALS--------------------------------
     #----------------------------------------------------------------
@@ -231,7 +279,7 @@ def readdata():
     for i,f in enumerate(glob.glob("IAs/*.csv")):
         rawdata['sn_%i'%i] = ascii.read(f)
         rawdata['annotations']['sn_%i'%i] = f
-        
+    print (len (glob.glob("IAs/*.csv")))
     #returnvalue = (dataGW, dataGWr, dataIIb, dataIIb_l,
      #              dataIa, dataIa2, dataIa_l, dataIa2_l,
      #              dataFB2, dataFB3, dataFB4, dataFB3b,
@@ -278,9 +326,10 @@ def getcdt(datain,
 
 
 
-dt1 = [1.5]#, 0.5, 3.5, 4.5, 6.5]#[0.5,1,1.5,2.5,3.5,4.5,5.5,6.5] #gap between obs in same filter
-dt2 = [0.5]#, 0, 1, 2] #gap between filters
-data = readdata()
+dt1 = [4]#[1.5, 0.5, 3.5, 4.5, 6.5]#[0.5,1,1.5,2.5,3.5,4.5,5.5,6.5] #gap between obs in same filter
+dt2 = [0]#[0.5, 0, 1, 2] #gap between filters
+from utils import readdata
+data = readdata(False)
 
 #print(data['GWr'])
 newdata = {}
@@ -308,6 +357,7 @@ if __name__ == '__main__':
         clf = GaussianProcessClassifier(kernel)
     #print(np.array([k for k in newdata.keys()]))
     nspecial = np.sum(~np.array([k.startswith('sn_') for k in newdata.keys()]))
+    print ("special lightcurves", nspecial)
     #number of normal IIs
     nII = np.sum(np.array([k.startswith('sn_II_') for k in newdata.keys()]))
     for i in [(t1, t2) for t1 in dt1 for t2 in dt2]:
@@ -316,7 +366,7 @@ if __name__ == '__main__':
         os.system("mkdir " + thisdir)
         tmp2 = getcdt(newdata,
                   delta_t=i[0], color_t=i[1])
-        
+        #print (tmp2)
         
         color = np.hstack([t[0] for t in tmp2[:nspecial]])
         shape = np.hstack([t[1] for t in tmp2[:nspecial]])
@@ -325,6 +375,7 @@ if __name__ == '__main__':
         iishape = np.hstack([t[1] for t in tmp2[nspecial:nspecial+nII]])
 
         N = color.shape[0]
+        print (N)
         nii = iicolor.shape[0]
 
         iacolor = np.hstack([t[0] for t in tmp2[nspecial+nII:]])
@@ -376,7 +427,8 @@ if __name__ == '__main__':
         
         #label = np.zeros(len(color))
         #label[:nsnIa] = 1
-
+        pl.show()
+        sys.exit()
         if REFIT:
             clf.fit(X, y)
             pickle.dump(clf, open(thisdir+"/GPmodel.pkl", 'wb'))
@@ -404,6 +456,8 @@ if __name__ == '__main__':
         Xfull = np.c_[xx.ravel(), yy.ravel()]
         probas = clf.predict_proba(Xfull)
 
+        print((probas[:, 0].flatten()<0.5).sum())
+
         # View probabilities:
         n_classes = np.unique(y_pred).size
         
@@ -418,15 +472,25 @@ if __name__ == '__main__':
         if idx.any():
             ax.scatter(X[:, 0], X[:, 1], marker='o', c='none', edgecolor='k',
                        alpha=0.5)
-        pl.errorbar(0, -1.25, xerr=0.006, color='k', capsize=3)
-        pl.errorbar(0, -1.5, xerr=0.039, color='k', capsize=3)
-        pl.errorbar(0, -1.75, xerr=0.255, color='k', capsize=3)        
-        pl.errorbar(0, -1.25, xerr=0.006*3, color='k', alpha = 0.5, lw=0.5)
-        pl.errorbar(0, -1.5, xerr=0.039*3, color='k', alpha = 0.5, lw=0.5)
-        pl.errorbar(0, -1.75, xerr=0.253*3, color='k', alpha = 0.5, lw=0.5)
-        pl.text(0.006*3+0.05, -1.25, r"$g=20$", va='center')
-        pl.text(0.039*3+0.05, -1.5, r"$g=22$", va='center')
-        pl.text(0.253*3+0.05, -1.75, r"$g=24$", va='center')
+
+
+            
+        #uncertainty on deltamag
+        pl.errorbar(0, -1.25, xerr=uncertainties[i[0]][20],
+                    color='k', capsize=3)
+        pl.errorbar(0, -1.5, xerr=uncertainties[i[0]][22],
+                    color='k', capsize=3)
+        pl.errorbar(0, -1.75, xerr=uncertainties[i[0]][24],
+                    color='k', capsize=3)        
+        pl.errorbar(0, -1.25, xerr=3*uncertainties[i[0]][20],
+                    color='k', alpha = 0.5, lw=0.5)
+        pl.errorbar(0, -1.5, xerr=3*uncertainties[i[0]][22],
+                    color='k', alpha = 0.5, lw=0.5)
+        pl.errorbar(0, -1.75, xerr=3*uncertainties[i[0]][24],
+                    color='k', alpha = 0.5, lw=0.5)
+        pl.text(uncertainties[i[0]][20]*3+0.05, -1.25, r"$g=20$", va='center')
+        pl.text(uncertainties[i[0]][22]*3+0.05, -1.5, r"$g=22$", va='center')
+        pl.text(uncertainties[i[0]][24]*3+0.05, -1.75, r"$g=24$", va='center')
 
         ax.set_xlabel(r"$\Delta$ mag", fontsize=18)
         ax.set_ylabel(r"color", fontsize=18)
