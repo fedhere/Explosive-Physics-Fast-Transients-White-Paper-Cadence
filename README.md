@@ -28,4 +28,4 @@ This repository collects material behind the PASP publication
 which is an extansion of the [original White Paper](https://www.lsst.org/submitted-whitepaper-2018) submitted in response to the [LSST call for white papers](https://www.lsst.org/call-whitepaper-2018) to propose LSST cadence strategies
 
 
-Please expect some better comments and some clean-up of this repository, In the mean time: the paper is collected in [paper](paper) while all the code behind the results and figures is in [FastTrWP](FastTrWP0
+Please expect some better comments and some clean-up of this repository, In the mean time: the paper is collected in [paper](paper) while all the code behind the results and figures is in [FastTrWP](FastTrWP)
