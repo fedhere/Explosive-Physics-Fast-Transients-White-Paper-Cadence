@@ -1,6 +1,7 @@
 This repository collects material behind the PASP publication
 
 **Presto-Color: A Photometric Survey Cadence for Explosive Physics and Fast Transients**
+
 *Federica B. Bianco, Maria R. Drout, Melissa L. Graham, Tyler A. Pritchard, Rahul Biswas, Gautham Narayan, Igor Andreoni, Philip S. Cowperthwaite, Tiago Ribeiro, and (With the Support of the LSST Transient and Variable Stars Collaboration)*
 
 *Published 2019 April 25 • © 2019. The Astronomical Society of the Pacific.*
